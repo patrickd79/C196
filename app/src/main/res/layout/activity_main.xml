@@ -10,7 +10,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/viewTermsBtn"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
@@ -19,6 +19,7 @@
         android:layout_marginBottom="250dp"
         android:backgroundTint="#4B8F97"
         android:onClick="openTermsScreen"
+        android:text="@string/view_terms"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,8 +35,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="#4B8F97"
-        android:onClick="openAssessmentsScreen"
-        android:text="@string/viewAssessmentBtn"
+        android:text="@string/view_assessments"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,13 +50,12 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="#4B8F97"
-        android:onClick="openCoursesScreen"
-        android:text="@string/viewCourseBtn"
+        android:text="@string/view_courses"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/viewTermsBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
