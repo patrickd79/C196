@@ -9,9 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PatrickDenneyMobileApp">
-        <activity android:name=".AssessmentList" android:parentActivityName=".MainActivity" />
-        <activity android:name=".CourseList" android:parentActivityName=".MainActivity"/>
-        <activity android:name=".TermList" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".TermAdd" android:parentActivityName=".TermList" />
+        <activity
+            android:name=".AssessmentList"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".CourseList"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".TermList"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -3,4 +3,9 @@
     <string name="view_terms">View Terms</string>
     <string name="view_assessments">View Assessments</string>
     <string name="view_courses">View Courses</string>
+    <string name="addTerm">Add a Term</string>
+    <string name="enter_a_title_for_the_term">Enter a Title for the Term</string>
+    <string name="enter_start_date_of_term">Enter Start Date of Term</string>
+    <string name="add_term">Add Term</string>
+    <string name="enter_end_date_of_term">Enter End Date of Term</string>
 </resources>
