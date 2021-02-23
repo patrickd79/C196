@@ -1,18 +1,27 @@
 package com.example.patrickdenneymobileapp;
 
 public class Term {
+    private int termId;
     private String title;
     private String start;
     private String end;
     private boolean courses;
-    private int studentId;
 
-    public Term(String title, String start, String end, boolean courses, int studentId) {
+    public Term(String title, String start, String end, boolean courses) {
         this.title = title;
         this.start = start;
         this.end = end;
         this.courses = courses;
-        this.studentId = studentId;
+
+    }
+    //overloaded constructor for returning from database
+    public Term(int termId, String title, String start, String end, boolean courses) {
+        this.termId = termId;
+        this.title = title;
+        this.start = start;
+        this.end = end;
+        this.courses = courses;
+
     }
 
     public String getTitle() {
@@ -39,7 +48,7 @@ public class Term {
         this.end = end;
     }
 
-    public boolean isCourses() {
+    public boolean getCourses() {
         return courses;
     }
 
@@ -47,11 +56,5 @@ public class Term {
         this.courses = courses;
     }
 
-    public int getStudentId() {
-        return studentId;
-    }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-    }
 }
