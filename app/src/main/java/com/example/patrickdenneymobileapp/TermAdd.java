@@ -2,6 +2,8 @@ package com.example.patrickdenneymobileapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import java.util.Objects;
@@ -15,4 +17,6 @@ public class TermAdd extends AppCompatActivity {
         this.setTitle("Add a Term");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
+
+
 }

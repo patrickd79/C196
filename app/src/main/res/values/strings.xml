@@ -8,4 +8,5 @@
     <string name="enter_start_date_of_term">Enter Start Date of Term</string>
     <string name="add_term">Add Term</string>
     <string name="enter_end_date_of_term">Enter End Date of Term</string>
+    <string name="addCourse">Add a Course</string>
 </resources>
