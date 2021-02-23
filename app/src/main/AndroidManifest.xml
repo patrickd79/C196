@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PatrickDenneyMobileApp">
-        <activity android:name=".TermAdd" android:parentActivityName=".TermList" />
+        <activity android:name=".EditTerm" android:parentActivityName=".TermList"/>
+        <activity
+            android:name=".TermAdd"
+            android:parentActivityName=".TermList" />
         <activity
             android:name=".AssessmentList"
             android:parentActivityName=".MainActivity" />

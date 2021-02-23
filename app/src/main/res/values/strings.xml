@@ -9,4 +9,5 @@
     <string name="add_term">Add Term</string>
     <string name="enter_end_date_of_term">Enter End Date of Term</string>
     <string name="addCourse">Add a Course</string>
+    <string name="update_term">Update Term</string>
 </resources>

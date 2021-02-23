@@ -1,6 +1,8 @@
 package com.example.patrickdenneymobileapp;
 
 public class Term {
+
+
     private int termId;
     private String title;
     private String start;
@@ -22,6 +24,10 @@ public class Term {
         this.end = end;
         this.courses = courses;
 
+    }
+
+    public String getTermId() {
+        return "" + termId;
     }
 
     public String getTitle() {
