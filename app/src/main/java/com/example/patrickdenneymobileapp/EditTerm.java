@@ -2,6 +2,7 @@ package com.example.patrickdenneymobileapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,9 @@ public class EditTerm extends AppCompatActivity {
         setContentView(R.layout.activity_edit_term);
         this.setTitle("Edit a Term");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        //get termID from TermList
+        Intent intent = getIntent();
+        long termID = intent.getLongExtra("id", TermList.termID);
         //set the view components to their ids
         editTermTitle = findViewById(R.id.editTermTitle);
         editTermStart = findViewById(R.id.editTermStart);
@@ -39,14 +43,13 @@ public class EditTerm extends AppCompatActivity {
     public void updateTerm(View v){
         Term term;
         try{
-            //create a Term object instance
-            term = new Term( -1, editTermTitle.getText().toString(),  editTermStart.getText().toString(), editTermEnd.getText().toString(), false);
-            //create a db object
-            SchedulerDataBase db = new SchedulerDataBase(EditTerm.this);
-            //add the term object to the DB
-            boolean added = db.addTermToDB(term);
-            //if addTermToDB returns true then this Toast displays that
-            Toast.makeText(EditTerm.this, "Term updated: " + added, Toast.LENGTH_LONG).show();
+            //
+            //
+            //
+            //need to retrieve the 1 term by ID from the database. Need to create a method in the DB to return the term object by ID, then can update by using setters.
+            //
+            //
+            //
         }catch(Exception e){
             Toast.makeText(EditTerm.this, "Error updating term.", Toast.LENGTH_SHORT).show();
         }

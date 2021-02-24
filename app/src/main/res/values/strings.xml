@@ -10,4 +10,5 @@
     <string name="enter_end_date_of_term">Enter End Date of Term</string>
     <string name="addCourse">Add a Course</string>
     <string name="update_term">Update Term</string>
+    <string name="delete_term">Delete Term</string>
 </resources>
