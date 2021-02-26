@@ -10,10 +10,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -52,7 +50,7 @@ public class TermList extends AppCompatActivity {
 
     public void populateTermList(){
         //create a db object
-        SchedulerDataBase db = new SchedulerDataBase(TermList.this);
+        Database db = new Database(TermList.this);
         //get a list of the terms from the DB object
         List<Term> termList = db.getAllTermsFromDB();
         List<String> termStrings = new ArrayList<>();

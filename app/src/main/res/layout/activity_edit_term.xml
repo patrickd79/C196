@@ -7,7 +7,7 @@
     tools:context=".EditTerm">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTitle"
         android:layout_width="350dp"
         android:layout_height="70dp"
         android:layout_marginStart="32dp"
@@ -25,6 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/editStart"
         android:layout_width="350dp"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
@@ -40,6 +41,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/editEnd"
         android:layout_width="350dp"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
@@ -55,7 +57,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/editTermBtn"
+        android:id="@+id/updateTermBtn"
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:layout_marginStart="32dp"
@@ -76,6 +78,19 @@
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/btn"
         android:text="@string/delete_term"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/editTermIDTextView"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/term_id"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

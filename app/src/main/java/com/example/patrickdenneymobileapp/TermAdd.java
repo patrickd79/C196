@@ -2,15 +2,12 @@ package com.example.patrickdenneymobileapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.List;
 import java.util.Objects;
 
 public class TermAdd extends AppCompatActivity {
@@ -40,7 +37,7 @@ public class TermAdd extends AppCompatActivity {
             //create a Term object instance
             term = new Term( -1, editTermTitle.getText().toString(),  editTermStart.getText().toString(), editTermEnd.getText().toString(), false);
             //create a db object
-            SchedulerDataBase db = new SchedulerDataBase(TermAdd.this);
+            Database db = new Database(TermAdd.this);
             //add the term object to the DB
             boolean added = db.addTermToDB(term);
             //if addTermToDB returns true then this Toast displays that

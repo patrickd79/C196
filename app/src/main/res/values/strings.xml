@@ -11,4 +11,5 @@
     <string name="addCourse">Add a Course</string>
     <string name="update_term">Update Term</string>
     <string name="delete_term">Delete Term</string>
+    <string name="term_id">Term ID</string>
 </resources>
