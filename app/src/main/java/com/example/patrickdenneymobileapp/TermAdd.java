@@ -2,6 +2,7 @@ package com.example.patrickdenneymobileapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,13 +36,15 @@ public class TermAdd extends AppCompatActivity {
         Term term;
         try{
             //create a Term object instance
-            term = new Term( -1, editTermTitle.getText().toString(),  editTermStart.getText().toString(), editTermEnd.getText().toString(), false);
+            term = new Term( editTermTitle.getText().toString(),  editTermStart.getText().toString(), editTermEnd.getText().toString(), false);
             //create a db object
             Database db = new Database(TermAdd.this);
             //add the term object to the DB
             boolean added = db.addTermToDB(term);
             //if addTermToDB returns true then this Toast displays that
             Toast.makeText(TermAdd.this, "Term added: " + added, Toast.LENGTH_LONG).show();
+            Intent refresh = new Intent(this, TermList.class);
+            startActivity(refresh);
         }catch(Exception e){
             Toast.makeText(TermAdd.this, "Error adding term.", Toast.LENGTH_SHORT).show();
         }

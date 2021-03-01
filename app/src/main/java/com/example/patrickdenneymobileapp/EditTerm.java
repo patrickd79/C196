@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ public class EditTerm extends AppCompatActivity {
     //NEED TO ADD FUNCTIONALITY FOR UPDATING NEW TERM INFORMATION AND DELETING OLD TERM INFORMATION
 
     public static long termID;
+    public Term term;
     //declare the View components
     TextView editTermID;
     EditText editTermTitle;
@@ -39,6 +41,7 @@ public class EditTerm extends AppCompatActivity {
         //get termID from TermList
         Intent intent = getIntent();
         termID = intent.getLongExtra("id", TermList.termID);
+        term = termList.get((int) termID);
         //set the view components to their ids
         editTermID = findViewById(R.id.editTermIDTextView);
          editTermTitle = findViewById(R.id.editTitle);
@@ -60,6 +63,15 @@ public class EditTerm extends AppCompatActivity {
             //term.getStart()
             //term.getEnd()
             //term.getCourses();
+
+    }
+
+    public void deleteTerm(View v){
+        Log.d("term to delete", term.getTermId());
+        Database db = new Database(EditTerm.this);
+        db.deleteOneTerm(term);
+        Intent refresh = new Intent(this, TermList.class);
+        startActivity(refresh);
 
     }
 

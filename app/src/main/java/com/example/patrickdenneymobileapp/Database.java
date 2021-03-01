@@ -15,12 +15,13 @@ public class Database extends SQLiteOpenHelper {
 
     public static final String dbName = "Scheduler Database";
     public static final int version = 1;
-    public static final String TERMS = "TERMS";
-    public static final String TERM_ID = "ID";
-    public static final String TERM_TITLE = "TITLE";
-    public static final String TERM_START_DATE = "START_DATE";
-    public static final String TERM_END_DATE = "END_DATE";
-    public static final String COURSES_IN_TERM = "COURSES";
+    public static final String terms = "TERMS";
+    public static final String term_id = "ID";
+    public static final String term_title = "TITLE";
+    public static final String term_start = "TERM_START";
+    public static final String term_end = "TERM_END";
+    public static final String term_got_courses = "TERM_COURSE";
+
     //List to hold the term objects
     public static List<Term> termList = new ArrayList<>();
     public static long termToDelete = EditTerm.termID;
@@ -33,13 +34,16 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TERMS + " (" + TERM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + TERM_TITLE + " TEXT, " + TERM_START_DATE + " TEXT, " + TERM_END_DATE + " TEXT, " + COURSES_IN_TERM + " BOOL)");
+        db.execSQL("CREATE TABLE "+terms+"("+term_id+" INTEGER PRIMARY KEY, "+term_title+" TEXT, " +  term_start + " TEXT, " +  term_end + " TEXT, " + term_got_courses+ " BOOL)");
+
+    }
+    public void dropTable(){
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists " + TERMS);
+        db.execSQL("drop table if exists TERMS");
 
         onCreate(db);
     }
@@ -50,18 +54,18 @@ public class Database extends SQLiteOpenHelper {
         //create a key value pair list of the values of the term
         ContentValues values = new ContentValues();
         //add the term values to the list
-        values.put(TERM_TITLE, term.getTitle());
-        values.put(TERM_START_DATE, term.getStart());
-        values.put(TERM_END_DATE, term.getEnd());
-        values.put(COURSES_IN_TERM, term.getCourses());
+        values.put(term_title, term.getTitle());
+        values.put(term_start, term.getStart());
+        values.put(term_end, term.getEnd());
+        values.put(term_got_courses, term.getCourses());
         //insert the value list into the term table and returns -1 if unsuccessful or 0 if successful
-        long insert = db.insert(TERMS, null, values);
+        long insert = db.insert(terms, null, values);
         //returns true for 0, false for -1
         return insert != -1;
     }
 
     public List<Term> getAllTermsFromDB(){
-       String query = "SELECT * FROM TERMS";
+       String query = "SELECT * FROM "+terms;
        SQLiteDatabase db = this.getReadableDatabase();
        Cursor cursor = db.rawQuery(query, null);
        if(cursor.moveToFirst()){
@@ -75,7 +79,7 @@ public class Database extends SQLiteOpenHelper {
                Term term = new Term(termId, title, start, end, courses);
                termList.add(term);
                Log.d("obj", "getAllTermsFromDB: " + termList.get(i).getTermId());
-               Log.d("ID col", "getAllTermsFromDB:" + TERM_ID);
+               Log.d("ID", "getAllTermsFromDB:" +term_id);
                i++;
            }while(cursor.moveToNext());
        }else{
@@ -91,12 +95,16 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
-    public void deleteOneTerm() {
+    public boolean deleteOneTerm(Term term) {
         //get a writeable database
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "DELETE FROM TERMS WHERE ID = " + termToDelete;
+        String query = "DELETE FROM TERMS WHERE "+term_id+"=" + term.getTermId();
         Cursor cursor = db.rawQuery(query,null);
-        cursor.close();
+        if(cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 

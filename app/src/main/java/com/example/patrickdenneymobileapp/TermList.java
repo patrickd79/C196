@@ -18,6 +18,10 @@ import java.util.Objects;
 public class TermList extends AppCompatActivity {
     ListView termListView;
     public static long termID;
+    //database object instance
+    Database db;
+    //list containing the terms to display
+    List<Term> termList;
 
 
     @Override
@@ -27,8 +31,17 @@ public class TermList extends AppCompatActivity {
         termListView = findViewById(R.id.termListView);
         this.setTitle("Terms");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        //add terms to the displayed list
         populateTermList();
+        //open the EditTerm activity for a term when it is clicked
         clickOnTerm();
+    }
+    protected void onResume(){
+        super.onResume();
+        //clear the old term list
+        termList.clear();
+        //repopulate list after the update or deletion from EditTerm
+        populateTermList();
     }
 
     public void clickOnTerm(){
@@ -50,9 +63,10 @@ public class TermList extends AppCompatActivity {
 
     public void populateTermList(){
         //create a db object
-        Database db = new Database(TermList.this);
+        db = new Database(TermList.this);
         //get a list of the terms from the DB object
-        List<Term> termList = db.getAllTermsFromDB();
+        termList = db.getAllTermsFromDB();
+
         List<String> termStrings = new ArrayList<>();
         for( Term term : termList) {
 
