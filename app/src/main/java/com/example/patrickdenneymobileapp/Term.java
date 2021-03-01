@@ -57,6 +57,13 @@ public class Term {
     public boolean getCourses() {
         return courses;
     }
+    public String getCourseString() {
+        if(courses){
+            return "Courses True";
+        }else{
+            return "Courses False";
+        }
+    }
 
     public void setCourses(boolean courses) {
         this.courses = courses;

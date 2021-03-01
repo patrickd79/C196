@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
 import java.util.Objects;
 
 import static com.example.patrickdenneymobileapp.Database.*;
@@ -28,6 +27,7 @@ public class EditTerm extends AppCompatActivity {
     EditText editTermTitle;
     EditText editTermStart;
     EditText editTermEnd;
+    EditText editCourses;
     Button updateTermBtn;
     Button delete;
 
@@ -47,6 +47,7 @@ public class EditTerm extends AppCompatActivity {
          editTermTitle = findViewById(R.id.editTitle);
          editTermStart = findViewById(R.id.editStart);
          editTermEnd = findViewById(R.id.editEnd);
+         editCourses = findViewById(R.id.editCoursesInTerm);
          updateTermBtn = findViewById(R.id.updateTermBtn);
          delete = findViewById(R.id.deleteTermBtn);
 
@@ -60,6 +61,9 @@ public class EditTerm extends AppCompatActivity {
             String idField = "Term ID: " + term.getTermId();
             editTermID.setText(idField);
             editTermTitle.setText(term.getTitle());
+            editTermStart.setText(term.getStart());
+            editTermEnd.setText(term.getEnd());
+            editCourses.setText(term.getCourseString());
             //term.getStart()
             //term.getEnd()
             //term.getCourses();

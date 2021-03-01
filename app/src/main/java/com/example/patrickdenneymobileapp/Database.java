@@ -15,16 +15,39 @@ public class Database extends SQLiteOpenHelper {
 
     public static final String dbName = "Scheduler Database";
     public static final int version = 1;
+    //Term table col names
     public static final String terms = "TERMS";
     public static final String term_id = "ID";
     public static final String term_title = "TITLE";
     public static final String term_start = "TERM_START";
     public static final String term_end = "TERM_END";
     public static final String term_got_courses = "TERM_COURSE";
-
-    //List to hold the term objects
+    //Courses table col names
+    public static final String courses = "COURSES";
+    public static final String course_id = "COURSE_ID";
+    public static final String course_title = "COURSE_TITLE";
+    public static final String course_start = "COURSE_START";
+    public static final String course_end = "COURSE_END";
+    public static final String course_status = "COURSE_STATUS";
+    public static final String course_instructor_id = "COURSE_INSTRUCTOR_ID";
+    public static final String course_notes = "COURSE_NOTES";
+    //Instructor table col names
+    public static final String instructors = "INSTRUCTORS";
+    public static final String ins_id = "INSTRUCTOR_ID";
+    public static final String ins_name = "INSTRUCTOR_NAME";
+    public static final String ins_ph_number = "INSTRUCTOR_PHONE";
+    public static final String ins_email = "INSTRUCTOR_EMAIL";
+    //Assessment table col names
+    public static final String assessments = "ASSESSMENTS";
+    public static final String assess_id = "ASSESSMENT_ID";
+    public static final String perf_or_obj = "PERF_OR_OBJ";
+    public static final String assess_title = "TITLE";
+    public static final String assess_end = "ASSESSMENT_END_DATE";
+    //List to hold the objects
     public static List<Term> termList = new ArrayList<>();
-    public static long termToDelete = EditTerm.termID;
+    public static List<Term> courseList = new ArrayList<>();
+    public static List<Term> instructorList = new ArrayList<>();
+    public static List<Term> assessmentList = new ArrayList<>();
 
 
     public Database(Context context){
@@ -35,16 +58,19 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE "+terms+"("+term_id+" INTEGER PRIMARY KEY, "+term_title+" TEXT, " +  term_start + " TEXT, " +  term_end + " TEXT, " + term_got_courses+ " BOOL)");
+        db.execSQL("CREATE TABLE "+courses+"("+course_id+" INTEGER PRIMARY KEY, "+course_title+" TEXT, " +  course_start + " TEXT, " +  course_end + " TEXT, " + course_status+ " TEXT, "+course_instructor_id+" INTEGER, "+course_notes+" TEXT)");
+        db.execSQL("CREATE TABLE "+instructors+"("+ins_id+" INTEGER PRIMARY KEY, "+ins_name+" TEXT, " +  ins_ph_number + " TEXT, " +  ins_email + " TEXT)");
+        db.execSQL("CREATE TABLE "+assessments+"("+assess_id+" PRIMARY KEY, "+perf_or_obj+" TEXT, " + assess_title + " TEXT, " +assess_end + " TEXT)");
 
-    }
-    public void dropTable(){
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists TERMS");
-
+        db.execSQL("drop table if exists "+terms);
+        db.execSQL("drop table if exists "+courses);
+        db.execSQL("drop table if exists "+instructors);
+        db.execSQL("drop table if exists "+assessments);
         onCreate(db);
     }
     //method to insert a new term to the database
