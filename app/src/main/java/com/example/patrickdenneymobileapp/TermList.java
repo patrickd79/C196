@@ -51,7 +51,7 @@ public class TermList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
                 TextView item = (TextView) itemClicked;
 
-                //Test Toast message to see that the correct item was clicked
+                //Test message to see that the correct item was clicked
                 String message = "Clicked on " + position + " Text: " + item.getText().toString();
                 Log.d("message ", message);
                 Log.d("Term ID ", String.valueOf(id));

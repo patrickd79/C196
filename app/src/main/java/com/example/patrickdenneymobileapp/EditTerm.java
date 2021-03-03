@@ -1,6 +1,7 @@
 package com.example.patrickdenneymobileapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ public class EditTerm extends AppCompatActivity {
         Intent intent = getIntent();
         termID = intent.getLongExtra("id", TermList.termID);
         term = termList.get((int) termID);
+        //setCoursesToTrue();
         //set the view components to their ids
         editTermID = findViewById(R.id.editTermIDTextView);
          editTermTitle = findViewById(R.id.editTitle);
@@ -69,13 +71,23 @@ public class EditTerm extends AppCompatActivity {
             //term.getCourses();
 
     }
+    public void setCoursesToTrue(){
+        term.setCourses(true);
+    }
 
     public void deleteTerm(View v){
         Log.d("term to delete", term.getTermId());
         Database db = new Database(EditTerm.this);
-        db.deleteOneTerm(term);
-        Intent refresh = new Intent(this, TermList.class);
-        startActivity(refresh);
+        if(term.getCourses()){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            DeleteTermWithCoursesAlert dialog = new DeleteTermWithCoursesAlert();
+            dialog.show(fragmentManager, "Please remove all courses from term before deleting.");
+        }else{
+            db.deleteOneTerm(term);
+            Intent refresh = new Intent(this, TermList.class);
+            startActivity(refresh);
+        }
+
 
     }
 
