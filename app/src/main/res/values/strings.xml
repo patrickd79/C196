@@ -14,5 +14,6 @@
     <string name="term_id">Term ID</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="delete_term_error">Please remove all courses from the term before deleting.</string>
+    <string name="edit_the_courses_for_the_term">Edit the courses for the Term</string>
+    <string name="deleteTermError">Please remove all courses from the term before deleting.</string>
 </resources>

@@ -43,13 +43,13 @@ public class EditTerm extends AppCompatActivity {
         Intent intent = getIntent();
         termID = intent.getLongExtra("id", TermList.termID);
         term = termList.get((int) termID);
-        //setCoursesToTrue();
+        setCoursesToTrue();
         //set the view components to their ids
         editTermID = findViewById(R.id.editTermIDTextView);
          editTermTitle = findViewById(R.id.editTitle);
          editTermStart = findViewById(R.id.editStart);
          editTermEnd = findViewById(R.id.editEnd);
-         editCourses = findViewById(R.id.editCoursesInTerm);
+         editCourses = findViewById(R.id.editTermCoursesText);
          updateTermBtn = findViewById(R.id.updateTermBtn);
          delete = findViewById(R.id.deleteTermBtn);
 
@@ -94,15 +94,18 @@ public class EditTerm extends AppCompatActivity {
 
     //method to add a new term when the add term btn is clicked
     public void updateTerm(View v){
-        Term term;
         try{
-            //
-            //
-            //
-            //need to retrieve the 1 term by ID from the database. Need to create a method in the DB to return the term object by ID, then can update by using setters.
-            //
-            //
-            //
+            term.setTitle(String.valueOf(editTermTitle.getText()));
+            term.setStart(String.valueOf(editTermStart.getText()));
+            term.setEnd(String.valueOf(editTermEnd.getText()));
+            if(term.getCourses()){
+                term.setCourses(true);
+            }
+            Database db = new Database(EditTerm.this);
+            db.updateTermInformation(term);
+
+
+
         }catch(Exception e){
             Toast.makeText(EditTerm.this, "Error updating term.", Toast.LENGTH_SHORT).show();
         }

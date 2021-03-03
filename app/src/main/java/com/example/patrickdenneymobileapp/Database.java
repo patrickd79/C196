@@ -90,6 +90,18 @@ public class Database extends SQLiteOpenHelper {
         return insert != -1;
     }
 
+    public void updateTermInformation(Term term){
+        //first have the edit term activity update the term in the termList in this class with the new information
+        //get a writeable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        //write SQL query
+        String updateQuery = "UPDATE "+terms+ " SET "+term_title+"= ?, "+term_start+"= ?, "+term_end+"= ?, "+term_got_courses+"= ? WHERE "+term_id+"= ?";
+        //update table
+        db.execSQL(updateQuery, new String[]{term.getTitle(), term.getStart(), term.getEnd(), term.getCourseString(), term.getTermId()});
+
+
+    }
+
     public List<Term> getAllTermsFromDB(){
        String query = "SELECT * FROM "+terms;
        SQLiteDatabase db = this.getReadableDatabase();
@@ -116,10 +128,7 @@ public class Database extends SQLiteOpenHelper {
        return termList;
     }
 
-    public void updateTermInformation(long termId){
-        //first have the edit term activity update the term in the termList in this class with the new information
 
-    }
 
     public boolean deleteOneTerm(Term term) {
         //get a writeable database

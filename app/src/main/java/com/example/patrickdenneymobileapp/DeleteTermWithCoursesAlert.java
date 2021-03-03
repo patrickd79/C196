@@ -23,7 +23,7 @@ public class DeleteTermWithCoursesAlert extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 TextView msg = (TextView) getActivity().findViewById(R.id.deleteTermError);
-                msg.setText(R.string.delete_term_error);
+                msg.setText("Please remove all courses from the term before deleting.");
             }
         };
         //build dialog
