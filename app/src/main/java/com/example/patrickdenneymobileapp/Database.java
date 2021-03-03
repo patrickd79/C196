@@ -31,6 +31,10 @@ public class Database extends SQLiteOpenHelper {
     public static final String course_status = "COURSE_STATUS";
     public static final String course_instructor_id = "COURSE_INSTRUCTOR_ID";
     public static final String course_notes = "COURSE_NOTES";
+    //Term and Courses Table
+    public static final String terms_and_courses = "TERMS_AND_COURSES";
+    public static final String tcTerm_ID = "Term_ID";
+    public static final String tcCourseID = "Course_ID";
     //Instructor table col names
     public static final String instructors = "INSTRUCTORS";
     public static final String ins_id = "INSTRUCTOR_ID";
@@ -59,6 +63,7 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE "+terms+"("+term_id+" INTEGER PRIMARY KEY, "+term_title+" TEXT, " +  term_start + " TEXT, " +  term_end + " TEXT, " + term_got_courses+ " BOOL)");
         db.execSQL("CREATE TABLE "+courses+"("+course_id+" INTEGER PRIMARY KEY, "+course_title+" TEXT, " +  course_start + " TEXT, " +  course_end + " TEXT, " + course_status+ " TEXT, "+course_instructor_id+" INTEGER, "+course_notes+" TEXT)");
+        db.execSQL("CREATE TABLE "+terms_and_courses+"("+tcTerm_ID+" INTEGER, "+tcCourseID+" INTEGER, PRIMARY KEY("+tcTerm_ID+","+tcCourseID);
         db.execSQL("CREATE TABLE "+instructors+"("+ins_id+" INTEGER PRIMARY KEY, "+ins_name+" TEXT, " +  ins_ph_number + " TEXT, " +  ins_email + " TEXT)");
         db.execSQL("CREATE TABLE "+assessments+"("+assess_id+" PRIMARY KEY, "+perf_or_obj+" TEXT, " + assess_title + " TEXT, " +assess_end + " TEXT)");
 
@@ -71,6 +76,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("drop table if exists "+courses);
         db.execSQL("drop table if exists "+instructors);
         db.execSQL("drop table if exists "+assessments);
+        db.execSQL("drop table if exists "+terms_and_courses);
         onCreate(db);
     }
     //method to insert a new term to the database
