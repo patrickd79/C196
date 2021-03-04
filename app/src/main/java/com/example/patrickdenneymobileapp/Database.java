@@ -49,9 +49,9 @@ public class Database extends SQLiteOpenHelper {
     public static final String assess_end = "ASSESSMENT_END_DATE";
     //List to hold the objects
     public static List<Term> termList = new ArrayList<>();
-    public static List<Term> courseList = new ArrayList<>();
-    public static List<Term> instructorList = new ArrayList<>();
-    public static List<Term> assessmentList = new ArrayList<>();
+    public static List<Course> courseList = new ArrayList<>();
+    public static List<Instructor> instructorList = new ArrayList<>();
+    public static List<Assessment> assessmentList = new ArrayList<>();
 
 
     public Database(Context context){
@@ -79,6 +79,80 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("drop table if exists "+terms_and_courses);
         onCreate(db);
     }
+
+    public boolean deleteOneCourse(Course course) {
+        //get a writeable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM COURSES WHERE "+course_id+"=" + course.getCourseId();
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public void updateCourseInformation(Course course){
+        //first have the edit course activity update the course in the courseList in this class with the new information
+        //get a writeable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        //write SQL query
+        String updateQuery = "UPDATE "+courses+ " SET "+course_title+"= ?, "+course_start+"= ?, "+course_end+"= ?, "+course_status+"= ?, "+course_instructor_id+"= ?, "+course_notes+"= ? WHERE "+course_id+"= ?";
+        //update table
+        db.execSQL(updateQuery, new String[]{course.getCourseTitle(), course.getCourseStart(), course.getCourseEnd(), course.getCourseStatus(), String.valueOf(course.getCourseInstructorID()),
+                course.getCourseNotes(), String.valueOf(course.getCourseId())});
+    }
+
+    //method to insert a new course to the database
+    public boolean addCourseToDB(Course course){
+        //get a writeable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        //create a key value pair list of the values of the courses
+        ContentValues values = new ContentValues();
+        //add the course values to the list
+        values.put(course_title, course.getCourseTitle());
+        values.put(course_start, course.getCourseStart());
+        values.put(course_end, course.getCourseEnd());
+        values.put(course_status, course.getCourseStatus());
+        values.put(course_instructor_id, course.getCourseInstructorID());
+        values.put(course_notes, course.getCourseNotes());
+        //insert the value list into the course table and returns -1 if unsuccessful or 0 if successful
+        long insert = db.insert(courses, null, values);
+        //returns true for 0, false for -1
+        return insert != -1;
+    }
+
+    public List<Course> getAllCoursesFromDB(){
+        String query = "SELECT * FROM "+courses;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            int i = 0;
+            do{
+                int courseId = cursor.getInt(0);
+                String title = cursor.getString(1);
+                String start = cursor.getString(2);
+                String end = cursor.getString(3);
+                String status = cursor.getString(4);
+                int instructor = cursor.getInt(5);
+                String notes = cursor.getString(6);
+
+                Course course = new Course(courseId, title, start, end, status,instructor,notes);
+                courseList.add(course);
+                Log.d("obj", "getAllCoursesFromDB: " + courseList.get(i).getCourseId());
+                Log.d("ID", "getAllCoursesFromDB:" +course_id);
+                i++;
+            }while(cursor.moveToNext());
+        }else{
+            //nothing to return
+        }
+        cursor.close();
+        db.close();
+        return courseList;
+    }
+
+
+
     //method to insert a new term to the database
     public boolean addTermToDB(Term term){
         //get a writeable database
@@ -134,8 +208,6 @@ public class Database extends SQLiteOpenHelper {
        return termList;
     }
 
-
-
     public boolean deleteOneTerm(Term term) {
         //get a writeable database
         SQLiteDatabase db = this.getWritableDatabase();
@@ -147,6 +219,9 @@ public class Database extends SQLiteOpenHelper {
             return false;
         }
     }
+
+
+
 
 
 

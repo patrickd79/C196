@@ -103,6 +103,8 @@ public class EditTerm extends AppCompatActivity {
             }
             Database db = new Database(EditTerm.this);
             db.updateTermInformation(term);
+            Intent refresh = new Intent(this, TermList.class);
+            startActivity(refresh);
 
 
 

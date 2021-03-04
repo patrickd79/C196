@@ -30,6 +30,7 @@ public class TermList extends AppCompatActivity {
         setContentView(R.layout.activity_term_list);
         termListView = findViewById(R.id.termListView);
         this.setTitle("Terms");
+        //back button to parent activity
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         //add terms to the displayed list
         populateTermList();
