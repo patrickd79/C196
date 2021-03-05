@@ -17,10 +17,27 @@
     <string name="edit_the_courses_for_the_term">Edit the courses for the Term</string>
     <string name="deleteTermError">Please remove all courses from the term before deleting.</string>
     <string name="title_activity_assessment_add">AssessmentAdd</string>
+    <string-array name="course_status_spinner_options">
+        <item>In Progress</item>
+        <item>Completed</item>
+        <item>Dropped</item>
+        <item>Plan to Take</item>
+    </string-array>
+    <string-array name="course_instructor_spinner_options">
+        <item>Dr.Bob</item>
+        <item>Mr.Ted</item>
+        <item>Dr.Sally</item>
+        <item>Dr.Louise</item>
+    </string-array>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
     <string name="addAssessBtn">TODO</string>
+    <string name="add_a_title_for_the_course">Add a Title for the Course</string>
+    <string name="you_can_add_assessments_to_the_course_after_you_add_the_course_select_the_course_from_the_course_list_and_add_any_assessments_there">You can add Assessments to the Course after you add the Course. Select the Course from the Course List and add any assessments there.</string>
+    <string name="enter_a_start_date_for_the_course">Enter a Start Date for the Course</string>
+    <string name="enter_an_end_date_for_the_course">Enter an End Date for the Course</string>
+    <string name="add_course">Add Course</string>
 </resources>

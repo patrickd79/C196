@@ -2,7 +2,9 @@ package com.example.patrickdenneymobileapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -26,7 +28,7 @@ public class CourseList extends AppCompatActivity {
         this.setTitle("Courses");
         // back button to parent activity
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        populateCourseList();
+        //populateCourseList();
     }
 
     public void populateCourseList(){
@@ -43,5 +45,10 @@ public class CourseList extends AppCompatActivity {
         }
         ArrayAdapter<String> courseArray = new ArrayAdapter<String>(CourseList.this, android.R.layout.simple_list_item_1, courseStrings);
         courseListView.setAdapter(courseArray);
+    }
+
+    public void openAddCourseScreen(View v){
+        Intent intent = new Intent(this, CourseAdd.class);
+        startActivity(intent);
     }
 }

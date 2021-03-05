@@ -14,10 +14,11 @@
         android:layout_marginBottom="32dp"
         android:backgroundTint="@color/btn"
         android:clickable="true"
+        android:contentDescription="@string/addCourse"
+        android:onClick="openAddCourseScreen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:contentDescription="@string/addCourse" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
     <ListView
         android:id="@+id/addCourseListView"

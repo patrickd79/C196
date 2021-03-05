@@ -43,7 +43,7 @@ public class EditTerm extends AppCompatActivity {
         Intent intent = getIntent();
         termID = intent.getLongExtra("id", TermList.termID);
         term = termList.get((int) termID);
-        setCoursesToTrue();
+        //setCoursesToTrue();
         //set the view components to their ids
         editTermID = findViewById(R.id.editTermIDTextView);
          editTermTitle = findViewById(R.id.editTitle);
