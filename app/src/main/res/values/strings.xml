@@ -29,6 +29,10 @@
         <item>Dr.Sally</item>
         <item>Dr.Louise</item>
     </string-array>
+    <string-array name="add_assessment_spinner_options">
+        <item>Performance</item>
+        <item>Objective</item>
+    </string-array>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
@@ -39,5 +43,10 @@
     <string name="you_can_add_assessments_to_the_course_after_you_add_the_course_select_the_course_from_the_course_list_and_add_any_assessments_there">You can add Assessments to the Course after you add the Course. Select the Course from the Course List and add any assessments there.</string>
     <string name="enter_a_start_date_for_the_course">Enter a Start Date for the Course</string>
     <string name="enter_an_end_date_for_the_course">Enter an End Date for the Course</string>
+
+    <string name="enter_a_title_for_the_assessment">Enter a Title for the Assessment</string>
+    <string name="enter_an_end_date_for_the_assessment">Enter an end Date for the Assessment</string>
     <string name="add_course">Add Course</string>
+    <string name="add_assessment">Add Assessment</string>
+    <string name="course_associated_with_this_assessment">Course Associated with This Assessment</string>
 </resources>

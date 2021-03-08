@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PatrickDenneyMobileApp">
-        <activity android:name=".AssessmentAdd"></activity>
-        <activity android:name=".EditAssessment" />
-        <activity android:name=".EditCourse" />
+        <activity android:name=".AssessmentAdd" android:parentActivityName=".AssessmentList"/>
+        <activity android:name=".EditAssessment" android:parentActivityName=".AssessmentList"/>
+        <activity android:name=".EditCourse" android:parentActivityName=".CourseList"/>/>
         <activity
             android:name=".EditTerm"
             android:parentActivityName=".TermList" />

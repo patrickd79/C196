@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
 public class Database extends SQLiteOpenHelper {
 
     public static final String dbName = "Scheduler Database";
-    public static final int version = 2;
+    public static final int version = 5;
     //Term table col names
     public static final String terms = "TERMS";
     public static final String term_id = "ID";
@@ -44,9 +43,10 @@ public class Database extends SQLiteOpenHelper {
     //Assessment table col names
     public static final String assessments = "ASSESSMENTS";
     public static final String assess_id = "ASSESSMENT_ID";
-    public static final String perf_or_obj = "PERF_OR_OBJ";
     public static final String assess_title = "TITLE";
+    public static final String perf_or_obj = "PERF_OR_OBJ";
     public static final String assess_end = "ASSESSMENT_END_DATE";
+    public static final String assess_associated_course = "ASSOCIATED_COURSE";
     //List to hold the objects
     public static List<Term> termList = new ArrayList<>();
     public static List<Course> courseList = new ArrayList<>();
@@ -65,7 +65,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE "+courses+"("+course_id+" INTEGER PRIMARY KEY, "+course_title+" TEXT, " +  course_start + " TEXT, " +  course_end + " TEXT, " + course_status+ " TEXT, "+course_instructor_id+" INTEGER, "+course_notes+" TEXT)");
         db.execSQL("CREATE TABLE "+terms_and_courses+"("+tcTerm_ID+" INTEGER, "+tcCourseID+" INTEGER, PRIMARY KEY("+tcTerm_ID+","+tcCourseID+"))");
         db.execSQL("CREATE TABLE "+instructors+"("+ins_id+" INTEGER PRIMARY KEY, "+ins_name+" TEXT, " +  ins_ph_number + " TEXT, " +  ins_email + " TEXT)");
-        db.execSQL("CREATE TABLE "+assessments+"("+assess_id+" PRIMARY KEY, "+perf_or_obj+" TEXT, " + assess_title + " TEXT, " +assess_end + " TEXT)");
+        db.execSQL("CREATE TABLE "+assessments+"("+assess_id+" PRIMARY KEY, "+ assess_title + " TEXT,"+perf_or_obj+" TEXT, " +assess_end + " TEXT, " +assess_associated_course+ "TEXT)");
 
 
     }
@@ -78,6 +78,50 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("drop table if exists "+assessments);
         db.execSQL("drop table if exists "+terms_and_courses);
         onCreate(db);
+    }
+
+    //method to insert a new assessment to the database
+    public boolean addAssessmentToDB(Assessment assessment){
+        //get a writeable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        //create a key value pair list of the values of the assessment
+        ContentValues values = new ContentValues();
+        //add the assessment values to the list
+        values.put(assess_title, assessment.getAssessmentTitle());
+        values.put(perf_or_obj, assessment.getPerfOrObjective());
+        values.put(assess_end, assessment.getAssessmentEndDate());
+        values.put(assess_associated_course, assessment.getAssociatedCourseTitle());
+        //insert the value list into the assessment table and returns -1 if unsuccessful or 0 if successful
+        long insert = db.insert(assessments, null, values);
+        //returns true for 0, false for -1
+        return insert != -1;
+    }
+
+    public List<Assessment> getAllAssessmentsFromDB(){
+        String query = "SELECT * FROM "+assessments;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            int i = 0;
+            do{
+                int assessmentId = cursor.getInt(0);
+                String title = cursor.getString(1);
+                String perfOrObj = cursor.getString(2);
+                String end = cursor.getString(3);
+                String course = cursor.getString(4);
+
+                Assessment assessment = new Assessment(assessmentId, perfOrObj, title, end, course);
+                assessmentList.add(assessment);
+                Log.d("obj", "getAllAssessmentsFromDB: " + assessmentList.get(i).getAssessmentID());
+                Log.d("ID", "getAllAssessmentsFromDB:" +assess_id);
+                i++;
+            }while(cursor.moveToNext());
+        }else{
+            //nothing to return
+        }
+        cursor.close();
+        db.close();
+        return assessmentList;
     }
 
     public boolean deleteOneCourse(Course course) {

@@ -31,6 +31,14 @@ public class CourseList extends AppCompatActivity {
         populateCourseList();
     }
 
+    protected void onResume(){
+        super.onResume();
+        //clear the old term list
+        courseList.clear();
+        //repopulate list after the update or deletion from EditTerm
+        populateCourseList();
+    }
+
     public void populateCourseList(){
         //create a db object
         db = new Database(CourseList.this);

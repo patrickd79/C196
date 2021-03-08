@@ -14,10 +14,11 @@
         android:layout_marginBottom="32dp"
         android:backgroundTint="#4B8F97"
         android:clickable="true"
+        android:contentDescription="@string/addAssessBtn"
+        android:onClick="openAddAssessmentScreen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:contentDescription="@string/addAssessBtn" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
     <ListView
         android:id="@+id/addAssessListView"

@@ -5,11 +5,21 @@ public class Assessment {
     private String assessmentTitle;
     private String perfOrObjective;
     private String assessmentEndDate;
+    private String associatedCourseTitle;
 
-    public Assessment(String assessmentTitle, String perfOrObjective, String assessmentEndDate) {
+    public Assessment(int assessmentID, String assessmentTitle, String perfOrObjective, String assessmentEndDate, String associatedCourseTitle) {
+        this.assessmentID = assessmentID;
         this.assessmentTitle = assessmentTitle;
         this.perfOrObjective = perfOrObjective;
         this.assessmentEndDate = assessmentEndDate;
+        this.associatedCourseTitle = associatedCourseTitle;
+    }
+    public Assessment(String assessmentTitle, String perfOrObjective, String assessmentEndDate, String associatedCourseTitle) {
+        this.assessmentID = assessmentID;
+        this.assessmentTitle = assessmentTitle;
+        this.perfOrObjective = perfOrObjective;
+        this.assessmentEndDate = assessmentEndDate;
+        this.associatedCourseTitle = associatedCourseTitle;
     }
 
     public Assessment(int assessmentID, String assessmentTitle, String perfOrObjective, String assessmentEndDate) {
@@ -50,4 +60,14 @@ public class Assessment {
     public void setAssessmentEndDate(String assessmentEndDate) {
         this.assessmentEndDate = assessmentEndDate;
     }
+
+    public String getAssociatedCourseTitle() {
+        return associatedCourseTitle;
+    }
+
+    public void setAssociatedCourseTitle(String associatedCourseTitle) {
+        this.associatedCourseTitle = associatedCourseTitle;
+    }
+
+
 }

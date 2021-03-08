@@ -65,7 +65,7 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
 
     }
 
-    //method to add a new term when the add term btn is clicked
+    //method to add a new course when the add course btn is clicked
     public void addCourse(View v) {
         Course course;
         try {
@@ -76,9 +76,9 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
             );
             //create a db object
             Database db = new Database(CourseAdd.this);
-            //add the term object to the DB
+            //add the course object to the DB
             boolean added = db.addCourseToDB(course);
-            //if addTermToDB returns true then this Toast displays that
+            //if addCourseToDB returns true then this Toast displays that
             Toast.makeText(CourseAdd.this, "Course added: " + added, Toast.LENGTH_LONG).show();
             Intent refresh = new Intent(this, CourseList.class);
             startActivity(refresh);
