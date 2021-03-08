@@ -28,7 +28,7 @@ public class CourseList extends AppCompatActivity {
         this.setTitle("Courses");
         // back button to parent activity
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        //populateCourseList();
+        populateCourseList();
     }
 
     public void populateCourseList(){
