@@ -13,7 +13,7 @@ import java.util.List;
 public class Database extends SQLiteOpenHelper {
 
     public static final String dbName = "Scheduler Database";
-    public static final int version = 5;
+    public static final int version = 7;
     //Term table col names
     public static final String terms = "TERMS";
     public static final String term_id = "ID";
@@ -65,7 +65,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE "+courses+"("+course_id+" INTEGER PRIMARY KEY, "+course_title+" TEXT, " +  course_start + " TEXT, " +  course_end + " TEXT, " + course_status+ " TEXT, "+course_instructor_id+" INTEGER, "+course_notes+" TEXT)");
         db.execSQL("CREATE TABLE "+terms_and_courses+"("+tcTerm_ID+" INTEGER, "+tcCourseID+" INTEGER, PRIMARY KEY("+tcTerm_ID+","+tcCourseID+"))");
         db.execSQL("CREATE TABLE "+instructors+"("+ins_id+" INTEGER PRIMARY KEY, "+ins_name+" TEXT, " +  ins_ph_number + " TEXT, " +  ins_email + " TEXT)");
-        db.execSQL("CREATE TABLE "+assessments+"("+assess_id+" PRIMARY KEY, "+ assess_title + " TEXT,"+perf_or_obj+" TEXT, " +assess_end + " TEXT, " +assess_associated_course+ "TEXT)");
+        db.execSQL("CREATE TABLE "+assessments+"("+assess_id+" INTEGER PRIMARY KEY, "+ assess_title + " TEXT,"+perf_or_obj+" TEXT, " +assess_end + " TEXT, " +assess_associated_course+ " TEXT)");
 
 
     }

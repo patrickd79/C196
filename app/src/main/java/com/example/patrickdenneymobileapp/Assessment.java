@@ -15,7 +15,6 @@ public class Assessment {
         this.associatedCourseTitle = associatedCourseTitle;
     }
     public Assessment(String assessmentTitle, String perfOrObjective, String assessmentEndDate, String associatedCourseTitle) {
-        this.assessmentID = assessmentID;
         this.assessmentTitle = assessmentTitle;
         this.perfOrObjective = perfOrObjective;
         this.assessmentEndDate = assessmentEndDate;
