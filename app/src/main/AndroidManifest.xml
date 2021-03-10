@@ -13,7 +13,7 @@
         android:theme="@style/Theme.PatrickDenneyMobileApp">
         <activity android:name=".AssessmentAdd" android:parentActivityName=".AssessmentList"/>
         <activity android:name=".EditAssessment" android:parentActivityName=".AssessmentList"/>
-        <activity android:name=".EditCourse" android:parentActivityName=".CourseList"/>/>
+        <activity android:name=".EditCourse" android:parentActivityName=".CourseList"/>
         <activity
             android:name=".EditTerm"
             android:parentActivityName=".TermList" />
@@ -22,7 +22,7 @@
             android:parentActivityName=".TermList" />
         <activity
             android:name=".CourseAdd"
-            android:parentActivityName=".CourseList" />
+            android:parentActivityName=".CourseList" android:screenOrientation="portrait" />
         <activity
             android:name=".AssessmentList"
             android:parentActivityName=".MainActivity" />

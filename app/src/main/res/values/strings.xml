@@ -39,14 +39,18 @@
     -->
     <string name="hello_world">Hello Square World!</string>
     <string name="addAssessBtn">TODO</string>
-    <string name="add_a_title_for_the_course">Add a Title for the Course</string>
+    <string name="add_a_title_for_the_course">Course Title</string>
     <string name="you_can_add_assessments_to_the_course_after_you_add_the_course_select_the_course_from_the_course_list_and_add_any_assessments_there">You can add Assessments to the Course after you add the Course. Select the Course from the Course List and add any assessments there.</string>
-    <string name="enter_a_start_date_for_the_course">Enter a Start Date for the Course</string>
-    <string name="enter_an_end_date_for_the_course">Enter an End Date for the Course</string>
+    <string name="enter_a_start_date_for_the_course">Course Start Date</string>
+    <string name="enter_an_end_date_for_the_course">Course End Date</string>
 
-    <string name="enter_a_title_for_the_assessment">Enter a Title for the Assessment</string>
-    <string name="enter_an_end_date_for_the_assessment">Enter an end Date for the Assessment</string>
+    <string name="enter_a_title_for_the_assessment">Assessment Title</string>
+    <string name="enter_an_end_date_for_the_assessment">Assessment End Date</string>
     <string name="add_course">Add Course</string>
     <string name="add_assessment">Add Assessment</string>
-    <string name="course_associated_with_this_assessment">Course Associated with This Assessment</string>
+    <string name="course_associated_with_this_assessment">Associated Course</string>
+    <string name="status">Status</string>
+    <string name="enter_course_notes">Enter Course Notes</string>
+    <string name="instructor">Instructor</string>
+    <string name="associated_term">Associated Term</string>
 </resources>

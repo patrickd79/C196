@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background">
+    android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/addCourseTitleTV"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/add_a_title_for_the_course"
@@ -34,7 +34,7 @@
         android:inputType="date"
         android:textAlignment="center"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/space3"
+        app:layout_constraintEnd_toStartOf="@+id/courseAddDateSpace"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCourseTitleTV" />
 
@@ -51,7 +51,8 @@
         android:textAlignment="center"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/space3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/courseAddDateSpace"
         app:layout_constraintTop_toBottomOf="@+id/addCourseTitleTV" />
 
     <Spinner
@@ -60,48 +61,49 @@
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="8dp"
         android:background="@android:drawable/spinner_background"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/courseAddStatusInstructorSpace"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCourseEndTV" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDateAddCourseStart" />
 
     <Spinner
         android:id="@+id/addCourseIntructorSpinner"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:background="@android:drawable/spinner_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCourseStatusSpinner" />
+        app:layout_constraintStart_toEndOf="@+id/courseAddStatusInstructorSpace"
+        app:layout_constraintTop_toBottomOf="@+id/addCourseEndTV" />
 
     <TextView
         android:id="@+id/addCourseAddAssessmentMessage"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="0dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/you_can_add_assessments_to_the_course_after_you_add_the_course_select_the_course_from_the_course_list_and_add_any_assessments_there"
         android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCourseNotesTV" />
+        app:layout_constraintTop_toBottomOf="@+id/space2" />
 
     <Button
         android:id="@+id/addCourseToDBBtn"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="208dp"
         android:layout_marginEnd="24dp"
         android:onClick="addCourse"
         android:text="@string/add_course"
-        android:textColor="@color/background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,8 +113,8 @@
         android:id="@+id/addCourseNotesTV"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
         android:gravity="start|top"
@@ -121,9 +123,8 @@
         android:textAlignment="center"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseAddAssociatedTermSpinner" />
+        app:layout_constraintStart_toEndOf="@+id/space2"
+        app:layout_constraintTop_toBottomOf="@+id/addCourseIntructorSpinner" />
 
     <Spinner
         android:id="@+id/courseAddAssociatedTermSpinner"
@@ -131,11 +132,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="8dp"
         android:background="@android:drawable/spinner_background"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/space2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCourseIntructorSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/addCourseStatusSpinner" />
 
     <TextView
         android:id="@+id/textView3"
@@ -146,8 +147,8 @@
         android:text="@string/status"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/addCourseStatusSpinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/addCourseStatusSpinner"
+        app:layout_constraintStart_toStartOf="@+id/addCourseStatusSpinner" />
 
     <TextView
         android:id="@+id/textView4"
@@ -158,28 +159,44 @@
         android:text="@string/instructor"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/addCourseIntructorSpinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/addCourseIntructorSpinner"
+        app:layout_constraintStart_toStartOf="@+id/addCourseIntructorSpinner" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="0dp"
         android:layout_height="20dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:text="@string/associated_term"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/courseAddAssociatedTermSpinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/courseAddAssociatedTermSpinner"
+        app:layout_constraintStart_toStartOf="@+id/courseAddAssociatedTermSpinner" />
 
     <Space
-        android:id="@+id/space3"
+        android:id="@+id/courseAddDateSpace"
         android:layout_width="10dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCourseTitleTV" />
+
+    <Space
+        android:id="@+id/courseAddStatusInstructorSpace"
+        android:layout_width="10dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseAddDateSpace" />
+
+    <Space
+        android:id="@+id/space2"
+        android:layout_width="10dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseAddStatusInstructorSpace" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

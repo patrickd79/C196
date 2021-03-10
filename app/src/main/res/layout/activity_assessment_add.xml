@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".AssessmentAdd">
 
     <EditText
         android:id="@+id/addAssessTitleTV"
-        android:layout_width="350dp"
-        android:layout_height="70dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="24dp"
@@ -23,10 +24,10 @@
 
     <Spinner
         android:id="@+id/addAssessPerfObjSpinner"
-        android:layout_width="350dp"
-        android:layout_height="70dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="24dp"
         android:background="@android:drawable/spinner_background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,9 +37,11 @@
 
     <EditText
         android:id="@+id/addAssessEndDateTV"
-        android:layout_width="350dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/enter_an_end_date_for_the_assessment"
         android:inputType="date"
@@ -49,21 +52,22 @@
 
     <Spinner
         android:id="@+id/addAssessAssociatedCourseSpinner"
-        android:layout_width="350dp"
-        android:layout_height="70dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="24dp"
         android:background="@android:drawable/spinner_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addAssessmentAddCourseLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/addAssessEndDateTV" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="200dp"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="24dp"
         android:background="@color/btn"
         android:onClick="addAssessment"
@@ -72,19 +76,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addAssessAssociatedCourseSpinner" />
 
-    <EditText
-        android:id="@+id/addAssessmentAddCourseLabel"
-        android:layout_width="350dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/course_associated_with_this_assessment"
+    <TextView
+        android:id="@+id/addAssessAssociatedCourseSpinnerLabel"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Course"
         android:textAlignment="center"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addAssessEndDateTV" />
+        app:layout_constraintBottom_toTopOf="@+id/addAssessAssociatedCourseSpinner"
+        app:layout_constraintEnd_toEndOf="@+id/addAssessAssociatedCourseSpinner"
+        app:layout_constraintStart_toStartOf="@+id/addAssessAssociatedCourseSpinner" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
