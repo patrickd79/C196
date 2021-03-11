@@ -21,6 +21,7 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
     private EditText addCourseEnd;
     private Spinner addCourseStatus;
     private Spinner addCourseInstructor;
+    private Spinner courseAddAssociatedTermSpinner;
     private EditText addCourseNotes;
     private Button addCourseBtn;
 
@@ -48,6 +49,9 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
         instructorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addCourseInstructor.setAdapter(instructorAdapter);
         addCourseInstructor.setOnItemSelectedListener(this);
+        // add course terms spinner functionality
+        //NEED TO BUILD A RESOURCE TO GET THE ASSOCIATED TERMS FROM THE DB
+        courseAddAssociatedTermSpinner = findViewById(R.id.courseAddAssociatedTermSpinner);
 
 
 

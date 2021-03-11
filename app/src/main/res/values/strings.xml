@@ -53,4 +53,6 @@
     <string name="enter_course_notes">Enter Course Notes</string>
     <string name="instructor">Instructor</string>
     <string name="associated_term">Associated Term</string>
+    <string name="to_remove_courses_from_this_term_use_the_course_edit_screen">To remove courses from this Term. Use the Course edit Screen.</string>
+    <string name="courses_if_any_will_appear_here">Courses, if any will appear here</string>
 </resources>

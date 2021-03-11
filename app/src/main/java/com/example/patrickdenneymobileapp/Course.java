@@ -8,6 +8,11 @@ public class Course {
     private String courseStatus;
     private int courseInstructorID;
 
+    public Course(int courseId, String courseTitle) {
+        this.courseId = courseId;
+        this.courseTitle = courseTitle;
+    }
+
     public String getCourseTerm() {
         return courseTerm;
     }

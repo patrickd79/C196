@@ -22,6 +22,8 @@ public class TermList extends AppCompatActivity {
     Database db;
     //list containing the terms to display
     List<Term> termList;
+    //list containing the associated courses for the term
+    List<Course> courseList;
 
 
     @Override
@@ -70,8 +72,15 @@ public class TermList extends AppCompatActivity {
 
         List<String> termStrings = new ArrayList<>();
         for( Term term : termList) {
-
-            termStrings.add("ID: " + term.getTermId() + " Title: " + term.getTitle() + " Start Date: " + term.getStart() + " End Date: " + term.getEnd() + " Courses: " + term.getCourses());
+            //get associated courses for this term
+            courseList = db.getCoursesForASpecificTermFromDB(term);
+            //convert the associated courses to a string to append to the termStrings list
+            StringBuilder str = new StringBuilder();
+            for(Course course : courseList ){
+                str.append(course).append(" ");
+            }
+            String courses = str.toString();
+            termStrings.add("ID: " + term.getTermId() + " Title: " + term.getTitle() + " Start Date: " + term.getStart() + " End Date: " + term.getEnd() + " Courses: " + courses);
         }
         ArrayAdapter<String> termArray = new ArrayAdapter<String>(TermList.this, android.R.layout.simple_list_item_1, termStrings);
         termListView.setAdapter(termArray);

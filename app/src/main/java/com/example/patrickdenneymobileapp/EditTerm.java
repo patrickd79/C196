@@ -28,7 +28,7 @@ public class EditTerm extends AppCompatActivity {
     EditText editTermTitle;
     EditText editTermStart;
     EditText editTermEnd;
-    EditText editCourses;
+    TextView editCourses;
     Button updateTermBtn;
     Button delete;
 
@@ -49,7 +49,7 @@ public class EditTerm extends AppCompatActivity {
          editTermTitle = findViewById(R.id.editTitle);
          editTermStart = findViewById(R.id.editStart);
          editTermEnd = findViewById(R.id.editEnd);
-         editCourses = findViewById(R.id.editTermCoursesText);
+         editCourses = findViewById(R.id.editTermCourseList);
          updateTermBtn = findViewById(R.id.updateTermBtn);
          delete = findViewById(R.id.deleteTermBtn);
 

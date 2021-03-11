@@ -79,6 +79,33 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("drop table if exists "+terms_and_courses);
         onCreate(db);
     }
+    //method to get the courses associated with a specific term
+    public List<Course> getCoursesForASpecificTermFromDB(Term term){
+        String termID = term.getTermId().toString();
+        String query = "SELECT tc.Course_ID, c.COURSE_ID, c.COURSE_TITLE FROM COURSES c  JOIN TERMS_AND_COURSES tc ON tc.Course_ID = c.COURSE_ID " +
+                "WHERE tc.Term_ID = " + termID+"" ;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            int i = 0;
+            do{
+                int courseId = cursor.getInt(0);
+                String title = cursor.getString(1);
+                Course course = new Course(courseId, title);
+                courseList.add(course);
+                Log.d("obj", "getAllCoursesFromDB: " + courseList.get(i).getCourseId());
+                Log.d("ID", "getAllCoursesFromDB:" +course_id);
+                i++;
+            }while(cursor.moveToNext());
+        }else{
+            //nothing to return
+        }
+        cursor.close();
+        db.close();
+        return courseList;
+    }
+
+
 
     //method to insert a new assessment to the database
     public boolean addAssessmentToDB(Assessment assessment){
@@ -238,6 +265,7 @@ public class Database extends SQLiteOpenHelper {
                String start = cursor.getString(2);
                String end = cursor.getString(3);
                boolean courses = cursor.getInt(4) == 1 ? true: false;
+               //fix this to change courses when a course gets added
                Term term = new Term(termId, title, start, end, courses);
                termList.add(term);
                Log.d("obj", "getAllTermsFromDB: " + termList.get(i).getTermId());
@@ -251,6 +279,9 @@ public class Database extends SQLiteOpenHelper {
        db.close();
        return termList;
     }
+
+
+
 
     public boolean deleteOneTerm(Term term) {
         //get a writeable database
