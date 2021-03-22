@@ -55,4 +55,9 @@
     <string name="associated_term">Associated Term</string>
     <string name="to_remove_courses_from_this_term_use_the_course_edit_screen">To remove courses from this Term. Use the Course edit Screen.</string>
     <string name="courses_if_any_will_appear_here">Courses, if any will appear here</string>
+    <string name="edit_the_title_for_the_course">Edit Course Title</string>
+    <string name="edit_start_date_for_the_course">Edit Course Start</string>
+    <string name="edit_end_date_for_the_course">Edit Course End</string>
+    <string name="update_course">Update Course</string>
+    <string name="delete_course">Delete Course</string>
 </resources>

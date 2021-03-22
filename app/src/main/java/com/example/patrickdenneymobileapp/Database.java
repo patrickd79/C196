@@ -81,7 +81,7 @@ public class Database extends SQLiteOpenHelper {
     }
     //method to get the courses associated with a specific term
     public List<Course> getCoursesForASpecificTermFromDB(Term term){
-        String termID = term.getTermId().toString();
+        String termID = term.getTermId();
         String query = "SELECT tc.Course_ID, c.COURSE_ID, c.COURSE_TITLE FROM COURSES c  JOIN TERMS_AND_COURSES tc ON tc.Course_ID = c.COURSE_ID " +
                 "WHERE tc.Term_ID = " + termID+"" ;
         SQLiteDatabase db = this.getReadableDatabase();

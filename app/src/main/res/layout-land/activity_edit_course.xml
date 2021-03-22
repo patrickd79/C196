@@ -9,25 +9,24 @@
     <EditText
         android:id="@+id/editCourseTitleTV"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/edit_the_title_for_the_course"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextDateEditCourseStart"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/edit_start_date_for_the_course"
@@ -36,14 +35,13 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/space3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCourseTitleTV" />
+        app:layout_constraintTop_toBottomOf="@+id/courseEditAssociatedTermSpinner" />
 
     <EditText
         android:id="@+id/editCourseEndTV"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/edit_end_date_for_the_course"
@@ -52,7 +50,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/space3"
-        app:layout_constraintTop_toBottomOf="@+id/editCourseTitleTV" />
+        app:layout_constraintTop_toBottomOf="@+id/courseEditAssociatedTermSpinner" />
 
     <Space
         android:id="@+id/space3"
@@ -66,80 +64,78 @@
     <Spinner
         android:id="@+id/editCourseStatusSpinner"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="16dp"
         android:background="@android:drawable/spinner_background"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCourseEndTV" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="20dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
         android:text="@string/status"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/editCourseStatusSpinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/editCourseStatusSpinner"
+        app:layout_constraintStart_toStartOf="@+id/editCourseStatusSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDateEditCourseStart" />
 
     <Spinner
         android:id="@+id/editCourseInstructorSpinner"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="24dp"
         android:background="@android:drawable/spinner_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCourseStatusSpinner" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="20dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
         android:text="@string/instructor"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/editCourseInstructorSpinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/editCourseInstructorSpinner"
+        app:layout_constraintStart_toStartOf="@+id/editCourseInstructorSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDateEditCourseStart" />
 
     <Spinner
         android:id="@+id/courseEditAssociatedTermSpinner"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:background="@android:drawable/spinner_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editCourseInstructorSpinner"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="0dp"
         android:layout_height="20dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
         android:text="@string/associated_term"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/courseEditAssociatedTermSpinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/courseEditAssociatedTermSpinner"
+        app:layout_constraintStart_toStartOf="@+id/courseEditAssociatedTermSpinner"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editCourseNotesTV"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
@@ -150,16 +146,15 @@
         android:textAlignment="center"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseEditAssociatedTermSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/editCourseStatusSpinner" />
 
     <TextView
         android:id="@+id/editCourseAddAssessmentMessage"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:text="@string/you_can_add_assessments_to_the_course_after_you_add_the_course_select_the_course_from_the_course_list_and_add_any_assessments_there"
         android:textAlignment="center"
@@ -173,9 +168,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:text="Update Course"
+        android:text="@string/update_course"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editCourseAddAssessmentMessage" />
@@ -185,10 +180,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:onClick="deleteCourse"
-        android:text="Delete Course"
+        android:text="@string/delete_course"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/editCourseAddAssessmentMessage" />

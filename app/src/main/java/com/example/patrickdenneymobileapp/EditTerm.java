@@ -17,10 +17,7 @@ import java.util.Objects;
 import static com.example.patrickdenneymobileapp.Database.*;
 
 public class EditTerm extends AppCompatActivity {
-
-
     //NEED TO ADD FUNCTIONALITY FOR UPDATING NEW TERM INFORMATION AND DELETING OLD TERM INFORMATION
-
     public static long termID;
     public Term term;
     //declare the View components
@@ -31,7 +28,6 @@ public class EditTerm extends AppCompatActivity {
     TextView editCourses;
     Button updateTermBtn;
     Button delete;
-
     // create the layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {

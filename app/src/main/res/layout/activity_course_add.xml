@@ -135,7 +135,8 @@
         android:background="@android:drawable/spinner_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCourseIntructorSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/addCourseIntructorSpinner"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/textView3"

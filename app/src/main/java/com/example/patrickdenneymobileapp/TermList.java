@@ -65,6 +65,7 @@ public class TermList extends AppCompatActivity {
     }
 
     public void populateTermList(){
+
         //create a db object
         db = new Database(TermList.this);
         //get a list of the terms from the DB object
@@ -77,7 +78,7 @@ public class TermList extends AppCompatActivity {
             //convert the associated courses to a string to append to the termStrings list
             StringBuilder str = new StringBuilder();
             for(Course course : courseList ){
-                str.append(course).append(" ");
+                str.append(course.getCourseTitle()).append(", ");
             }
             String courses = str.toString();
             termStrings.add("ID: " + term.getTermId() + " Title: " + term.getTitle() + " Start Date: " + term.getStart() + " End Date: " + term.getEnd() + " Courses: " + courses);
