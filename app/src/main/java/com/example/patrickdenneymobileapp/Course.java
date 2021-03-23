@@ -7,7 +7,8 @@ public class Course {
     private String courseEnd;
     private String courseStatus;
     private String instructorName;
-    private int courseInstructorID;
+    private String instructorPhone;
+    private String instructorEmail;
     private String courseTermTitle;
     private String courseNotes;
 
@@ -16,49 +17,28 @@ public class Course {
         this.courseTitle = courseTitle;
     }
 
-
-
-
-
-    public Course(int courseId, String courseTitle, String courseStart, String courseEnd, String courseStatus, int courseInstructorID, String courseNotes, String courseTermTitle) {
+    public Course(int courseId, String courseTitle, String courseStart, String courseEnd, String courseStatus, String instructorName, String instructorPhone, String instructorEmail, String courseTermTitle, String courseNotes) {
         this.courseId = courseId;
         this.courseTitle = courseTitle;
         this.courseStart = courseStart;
         this.courseEnd = courseEnd;
         this.courseStatus = courseStatus;
-        this.courseInstructorID = courseInstructorID;
-        this.courseNotes = courseNotes;
+        this.instructorName = instructorName;
+        this.instructorPhone = instructorPhone;
+        this.instructorEmail = instructorEmail;
         this.courseTermTitle = courseTermTitle;
+        this.courseNotes = courseNotes;
     }
 
-    public Course(String courseTitle, String courseStart, String courseEnd, String courseStatus, int courseInstructorID, String courseNotes, String courseTermTitle) {
+    public Course(String courseTitle, String courseStart, String courseEnd, String courseStatus, String instructorName, String instructorPhone, String instructorEmail, String courseTermTitle, String courseNotes) {
         this.courseTitle = courseTitle;
         this.courseStart = courseStart;
         this.courseEnd = courseEnd;
         this.courseStatus = courseStatus;
-        this.courseInstructorID = courseInstructorID;
-        this.courseNotes = courseNotes;
+        this.instructorName = instructorName;
+        this.instructorPhone = instructorPhone;
+        this.instructorEmail = instructorEmail;
         this.courseTermTitle = courseTermTitle;
-    }
-
-
-
-    public Course(String courseTitle, String courseStart, String courseEnd, String courseStatus, int courseInstructorID, String courseNotes) {
-        this.courseTitle = courseTitle;
-        this.courseStart = courseStart;
-        this.courseEnd = courseEnd;
-        this.courseStatus = courseStatus;
-        this.courseInstructorID = courseInstructorID;
-        this.courseNotes = courseNotes;
-    }
-
-    public Course(int courseId, String courseTitle, String courseStart, String courseEnd, String courseStatus, int courseInstructorID, String courseNotes) {
-        this.courseId = courseId;
-        this.courseTitle = courseTitle;
-        this.courseStart = courseStart;
-        this.courseEnd = courseEnd;
-        this.courseStatus = courseStatus;
-        this.courseInstructorID = courseInstructorID;
         this.courseNotes = courseNotes;
     }
 
@@ -113,13 +93,6 @@ public class Course {
         this.courseStatus = courseStatus;
     }
 
-    public int getCourseInstructorID() {
-        return courseInstructorID;
-    }
-
-    public void setCourseInstructorID(int courseInstructorID) {
-        this.courseInstructorID = courseInstructorID;
-    }
 
     public String getInstructorName() {
         return instructorName;
@@ -127,6 +100,22 @@ public class Course {
 
     public void setInstructorName(String instructor) {
         this.instructorName = instructor;
+    }
+
+    public String getInstructorPhone() {
+        return instructorPhone;
+    }
+
+    public void setInstructorPhone(String instructorPhone) {
+        this.instructorPhone = instructorPhone;
+    }
+
+    public String getInstructorEmail() {
+        return instructorEmail;
+    }
+
+    public void setInstructorEmail(String instructorEmail) {
+        this.instructorEmail = instructorEmail;
     }
 
     public String getCourseNotes() {

@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/add_a_title_for_the_course"
@@ -27,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/enter_a_start_date_for_the_course"
@@ -43,7 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/enter_an_end_date_for_the_course"
@@ -60,31 +60,18 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="@android:drawable/spinner_background"
         app:layout_constraintEnd_toStartOf="@+id/courseAddStatusInstructorSpace"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDateAddCourseStart" />
-
-    <Spinner
-        android:id="@+id/addCourseIntructorSpinner"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:background="@android:drawable/spinner_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/courseAddStatusInstructorSpace"
-        app:layout_constraintTop_toBottomOf="@+id/addCourseEndTV" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/addCourseAddAssessmentMessage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:text="@string/you_can_add_assessments_to_the_course_after_you_add_the_course_select_the_course_from_the_course_list_and_add_any_assessments_there"
@@ -93,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/space2" />
+        app:layout_constraintTop_toBottomOf="@+id/addCourseNotesTV" />
 
     <Button
         android:id="@+id/addCourseToDBBtn"
@@ -113,30 +100,30 @@
         android:id="@+id/addCourseNotesTV"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/enter_course_notes"
         android:inputType="textMultiLine"
         android:textAlignment="center"
-        android:textSize="14sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/space2"
-        app:layout_constraintTop_toBottomOf="@+id/addCourseIntructorSpinner" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseAddAssociatedTermSpinner" />
 
     <Spinner
         android:id="@+id/courseAddAssociatedTermSpinner"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="@android:drawable/spinner_background"
         app:layout_constraintEnd_toStartOf="@+id/space2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCourseStatusSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView3"
@@ -148,19 +135,8 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/addCourseStatusSpinner"
         app:layout_constraintEnd_toEndOf="@+id/addCourseStatusSpinner"
-        app:layout_constraintStart_toStartOf="@+id/addCourseStatusSpinner" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/instructor"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/addCourseIntructorSpinner"
-        app:layout_constraintEnd_toEndOf="@+id/addCourseIntructorSpinner"
-        app:layout_constraintStart_toStartOf="@+id/addCourseIntructorSpinner" />
+        app:layout_constraintStart_toStartOf="@+id/addCourseStatusSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDateAddCourseStart" />
 
     <TextView
         android:id="@+id/textView5"
@@ -170,13 +146,14 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/courseAddAssociatedTermSpinner"
         app:layout_constraintEnd_toEndOf="@+id/courseAddAssociatedTermSpinner"
-        app:layout_constraintStart_toStartOf="@+id/courseAddAssociatedTermSpinner" />
+        app:layout_constraintStart_toStartOf="@+id/courseAddAssociatedTermSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/addCourseStatusSpinner" />
 
     <Space
         android:id="@+id/courseAddDateSpace"
         android:layout_width="10dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCourseTitleTV" />
@@ -185,7 +162,7 @@
         android:id="@+id/courseAddStatusInstructorSpace"
         android:layout_width="10dp"
         android:layout_height="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/courseAddDateSpace" />
@@ -194,9 +171,52 @@
         android:id="@+id/space2"
         android:layout_width="10dp"
         android:layout_height="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/courseAddStatusInstructorSpace" />
+
+    <EditText
+        android:id="@+id/addCourseInstructorNameLandscape"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:hint="@string/enter_an_instructor_name"
+        android:inputType="textPersonName"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/courseAddStatusInstructorSpace"
+        app:layout_constraintTop_toBottomOf="@+id/addCourseEndTV" />
+
+    <EditText
+        android:id="@+id/addCourseInstructorPhoneLandscape"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:hint="@string/instructor_phone_number"
+        android:inputType="phone"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/courseAddStatusInstructorSpace"
+        app:layout_constraintTop_toBottomOf="@+id/addCourseInstructorNameLandscape" />
+
+    <EditText
+        android:id="@+id/addCourseIstructorEmailLandscape"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:hint="@string/instructor_email"
+        android:inputType="textEmailAddress"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/space2"
+        app:layout_constraintTop_toBottomOf="@+id/addCourseInstructorPhoneLandscape" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

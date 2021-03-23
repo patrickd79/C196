@@ -60,4 +60,7 @@
     <string name="edit_end_date_for_the_course">Edit Course End</string>
     <string name="update_course">Update Course</string>
     <string name="delete_course">Delete Course</string>
+    <string name="enter_an_instructor_name">Enter an Instructor Name</string>
+    <string name="instructor_phone_number">Instructor Phone Number</string>
+    <string name="instructor_email">Instructor Email</string>
 </resources>

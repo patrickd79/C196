@@ -84,7 +84,7 @@ public class AssessmentAdd extends AppCompatActivity implements AdapterView.OnIt
         //load courseStrings with course info
         for(Course course: courses){
             //courseStrings.contains(course);
-            courseStrings.add("Course: " + course.getCourseTitle());
+            courseStrings.add(course.getCourseTitle());
         }
         //create an array adapter for the strings
         ArrayAdapter<String> courseAdapter = new ArrayAdapter<String>(AssessmentAdd.this,

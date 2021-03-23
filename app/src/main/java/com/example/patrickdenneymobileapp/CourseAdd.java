@@ -2,6 +2,7 @@ package com.example.patrickdenneymobileapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,12 +23,12 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
     private EditText addCourseTitle;
     private EditText addCourseStart;
     private EditText addCourseEnd;
+    private EditText instructorName;
+    private EditText instructorPhone;
+    private EditText instructorEmail;
     private Spinner addCourseStatus;
-    private Spinner addCourseInstructor;
     private Spinner courseAddAssociatedTermSpinner;
     private EditText addCourseNotes;
-    private Button addCourseBtn;
-    private Database db;
     private List<Term> termList;
     private List<String> termStrings;
 
@@ -38,8 +39,6 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
         setContentView(R.layout.activity_course_add);
         this.setTitle("Add a Course");
         loadFields();
-
-
     }
 
     protected void onResume(){
@@ -61,7 +60,9 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
         addCourseStart = findViewById(R.id.editTextDateAddCourseStart);
         addCourseEnd = findViewById(R.id.addCourseEndTV);
         addCourseNotes = findViewById(R.id.addCourseNotesTV);
-        addCourseBtn = findViewById(R.id.addCourseToDBBtn);
+        instructorName = findViewById(R.id.addCourseInstructorName);
+        instructorPhone = findViewById(R.id.addCourseInstructorPhone);
+        instructorEmail = findViewById(R.id.addCourseInstructorEmail);
 
         //create the course status spinner functionality
         addCourseStatus = findViewById(R.id.addCourseStatusSpinner);
@@ -70,12 +71,6 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
         addCourseStatus.setAdapter(statusAdapter);
         addCourseStatus.setOnItemSelectedListener(this);
 
-        //add Course Instructor spinner functionality
-        addCourseInstructor = findViewById(R.id.addCourseIntructorSpinner);
-        ArrayAdapter<CharSequence> instructorAdapter = ArrayAdapter.createFromResource(this, R.array.course_instructor_spinner_options, android.R.layout.simple_spinner_item);
-        instructorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        addCourseInstructor.setAdapter(instructorAdapter);
-        addCourseInstructor.setOnItemSelectedListener(this);
 
         // add course terms spinner functionality
         //NEED TO BUILD A RESOURCE TO GET THE ASSOCIATED TERMS FROM THE DB
@@ -89,7 +84,7 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
 
     public void fillTermStringsArray(){
         //create a db object
-        db = new Database(CourseAdd.this);
+        Database db = new Database(CourseAdd.this);
         //get a list of the terms from the DB object
         termList = db.getAllTermsFromDB();
 
@@ -113,16 +108,13 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
 
     //method to add a new course when the add course btn is clicked
     public void addCourse(View v) {
-        db = new Database(CourseAdd.this);
         Course course;
-        int instructorID = db.getInstructorID(addCourseInstructor.getSelectedItem().toString());
         try {
-            //String status = addCourseStatus.getSelectedItem().toString();
-            //create a Course object instance
             course = new Course(addCourseTitle.getText().toString(), addCourseStart.getText().toString(), addCourseEnd.getText().toString(), addCourseStatus.getSelectedItem().toString(),
-                    instructorID,
-                    addCourseNotes.getText().toString(), courseAddAssociatedTermSpinner.getSelectedItem().toString()
+                    instructorName.getText().toString(), instructorPhone.getText().toString(), instructorEmail.getText().toString(),  courseAddAssociatedTermSpinner.getSelectedItem().toString(),
+                    addCourseNotes.getText().toString()
             );
+            Log.d("Instructor", "addCourse: " + instructorName);
             //create a db object
             Database db = new Database(CourseAdd.this);
             //add the course object to the DB

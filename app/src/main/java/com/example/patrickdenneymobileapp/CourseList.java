@@ -52,9 +52,10 @@ public class CourseList extends AppCompatActivity {
         List<String> courseStrings = new ArrayList<>();
         for( Course course : courseList) {
 
-            courseStrings.add("ID: " + course.getCourseId() + ", Title: " + course.getCourseTitle() + ", Start Date: " + course.getCourseStart() + ", End Date: " + course.getCourseEnd() + ", Status: "
-                    + course.getCourseStatus() + ", Course Instructor: "+ course.getInstructorName() + ", Term " + course.getCourseTermTitle()
-                    + ", Course Notes: " + course.getCourseNotes());
+            courseStrings.add("ID: " + course.getCourseId() + "  Title: " + course.getCourseTitle() + "\nStart Date: " + course.getCourseStart() + "  End Date: " + course.getCourseEnd() + "\nStatus: "
+                    + course.getCourseStatus() + "\nInstructor: "+ course.getInstructorName()+ "\nInstructor Phone: "+ course.getInstructorPhone()
+                    + "\nInstructor Email: "+ course.getInstructorEmail() +"\nTerm: " + course.getCourseTermTitle()
+                    + "\nCourse Notes: " + course.getCourseNotes());
         }
         ArrayAdapter<String> courseArray = new ArrayAdapter<String>(CourseList.this, android.R.layout.simple_list_item_1, courseStrings);
         courseListView.setAdapter(courseArray);
