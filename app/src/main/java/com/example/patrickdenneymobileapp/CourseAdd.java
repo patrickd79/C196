@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -36,6 +37,26 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_add);
         this.setTitle("Add a Course");
+        loadFields();
+
+
+    }
+
+    protected void onResume(){
+        super.onResume();
+        //clear the old term spinner
+        termList.clear();
+        termStrings.clear();
+        loadFields();
+
+    }
+    protected void onDestroy(){
+        super.onDestroy();
+        termList.clear();
+        termStrings.clear();
+    }
+
+    public void loadFields(){
         addCourseTitle = findViewById(R.id.addCourseTitleTV);
         addCourseStart = findViewById(R.id.editTextDateAddCourseStart);
         addCourseEnd = findViewById(R.id.addCourseEndTV);
@@ -64,7 +85,6 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
         termAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         courseAddAssociatedTermSpinner.setAdapter(termAdapter);
         courseAddAssociatedTermSpinner.setOnItemSelectedListener(this);
-
     }
 
     public void fillTermStringsArray(){
@@ -75,7 +95,7 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
 
         termStrings = new ArrayList<>();
         for( Term term : termList) {
-            termStrings.add("ID: " + term.getTermId() + " Title: " + term.getTitle() + " Start Date: " + term.getStart() + " End Date: " + term.getEnd());
+            termStrings.add( term.getTitle());
         }
     }
 
@@ -90,13 +110,17 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
 
     }
 
+
     //method to add a new course when the add course btn is clicked
     public void addCourse(View v) {
+        db = new Database(CourseAdd.this);
         Course course;
+        int instructorID = db.getInstructorID(addCourseInstructor.getSelectedItem().toString());
         try {
             //String status = addCourseStatus.getSelectedItem().toString();
             //create a Course object instance
-            course = new Course(addCourseTitle.getText().toString(), addCourseStart.getText().toString(), addCourseEnd.getText().toString(), addCourseStatus.getSelectedItem().toString(), 1,
+            course = new Course(addCourseTitle.getText().toString(), addCourseStart.getText().toString(), addCourseEnd.getText().toString(), addCourseStatus.getSelectedItem().toString(),
+                    instructorID,
                     addCourseNotes.getText().toString(), courseAddAssociatedTermSpinner.getSelectedItem().toString()
             );
             //create a db object

@@ -79,6 +79,14 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("drop table if exists "+terms_and_courses);
         onCreate(db);
     }
+
+    public int getInstructorID(String name){
+        String query = "SELECT INSTRUCTOR_ID FROM INSTRUCTORS WHERE INSTRUCTOR_NAME = " + name;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        return cursor.getInt(0);
+    }
     //method to get the courses associated with a specific term
     public List<Course> getCoursesForASpecificTermFromDB(Term term){
         String termID = term.getTermId();

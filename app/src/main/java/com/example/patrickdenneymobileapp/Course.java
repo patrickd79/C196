@@ -6,8 +6,9 @@ public class Course {
     private String courseStart;
     private String courseEnd;
     private String courseStatus;
+    private String instructorName;
     private int courseInstructorID;
-    private String courseTerm;
+    private String courseTermTitle;
     private String courseNotes;
 
     public Course(int courseId, String courseTitle) {
@@ -19,7 +20,7 @@ public class Course {
 
 
 
-    public Course(int courseId, String courseTitle, String courseStart, String courseEnd, String courseStatus, int courseInstructorID, String courseNotes, String courseTerm) {
+    public Course(int courseId, String courseTitle, String courseStart, String courseEnd, String courseStatus, int courseInstructorID, String courseNotes, String courseTermTitle) {
         this.courseId = courseId;
         this.courseTitle = courseTitle;
         this.courseStart = courseStart;
@@ -27,17 +28,17 @@ public class Course {
         this.courseStatus = courseStatus;
         this.courseInstructorID = courseInstructorID;
         this.courseNotes = courseNotes;
-        this.courseTerm = courseTerm;
+        this.courseTermTitle = courseTermTitle;
     }
 
-    public Course(String courseTitle, String courseStart, String courseEnd, String courseStatus, int courseInstructorID, String courseNotes, String courseTerm) {
+    public Course(String courseTitle, String courseStart, String courseEnd, String courseStatus, int courseInstructorID, String courseNotes, String courseTermTitle) {
         this.courseTitle = courseTitle;
         this.courseStart = courseStart;
         this.courseEnd = courseEnd;
         this.courseStatus = courseStatus;
         this.courseInstructorID = courseInstructorID;
         this.courseNotes = courseNotes;
-        this.courseTerm = courseTerm;
+        this.courseTermTitle = courseTermTitle;
     }
 
 
@@ -61,6 +62,16 @@ public class Course {
         this.courseNotes = courseNotes;
     }
 
+
+    public Course(String courseTitle, String courseStart, String courseEnd, String courseStatus, String instructor, String courseTermTitle, String courseNotes) {
+        this.courseTitle = courseTitle;
+        this.courseStart = courseStart;
+        this.courseEnd = courseEnd;
+        this.courseStatus = courseStatus;
+        this.instructorName = instructor;
+        this.courseTermTitle = courseTermTitle;
+        this.courseNotes = courseNotes;
+    }
 
     public int getCourseId() {
         return courseId;
@@ -110,6 +121,14 @@ public class Course {
         this.courseInstructorID = courseInstructorID;
     }
 
+    public String getInstructorName() {
+        return instructorName;
+    }
+
+    public void setInstructorName(String instructor) {
+        this.instructorName = instructor;
+    }
+
     public String getCourseNotes() {
         return courseNotes;
     }
@@ -118,11 +137,11 @@ public class Course {
         this.courseNotes = courseNotes;
     }
 
-    public String getCourseTerm() {
-        return courseTerm;
+    public String getCourseTermTitle() {
+        return courseTermTitle;
     }
 
-    public void setCourseTerm(String courseTerm) {
-        this.courseTerm = courseTerm;
+    public void setCourseTermTitle(String courseTermTitle) {
+        this.courseTermTitle = courseTermTitle;
     }
 }
