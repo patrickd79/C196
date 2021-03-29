@@ -13,11 +13,11 @@ import java.util.List;
 public class Database extends SQLiteOpenHelper {
 
     public static final String dbName = "Scheduler Database";
-    public static final int version = 8;
+    public static final int version = 10;
     //Term table col names
     public static final String terms = "TERMS";
-    public static final String term_id = "ID";
-    public static final String term_title = "TITLE";
+    public static final String term_id = "TERM_ID";
+    public static final String term_title = "TERM_TITLE";
     public static final String term_start = "TERM_START";
     public static final String term_end = "TERM_END";
     public static final String term_got_courses = "TERM_COURSE";
@@ -36,8 +36,6 @@ public class Database extends SQLiteOpenHelper {
     public static final String terms_and_courses = "TERMS_AND_COURSES";
     public static final String tcTerm_ID = "Term_ID";
     public static final String tcCourseID = "Course_ID";
-
-
     //Assessment table col names
     public static final String assessments = "ASSESSMENTS";
     public static final String assess_id = "ASSESSMENT_ID";
@@ -48,7 +46,6 @@ public class Database extends SQLiteOpenHelper {
     //List to hold the objects
     public static List<Term> termList = new ArrayList<>();
     public static List<Course> courseList = new ArrayList<>();
-    public static List<Instructor> instructorList = new ArrayList<>();
     public static List<Assessment> assessmentList = new ArrayList<>();
 
 
@@ -61,9 +58,8 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE "+terms+"("+term_id+" INTEGER PRIMARY KEY, "+term_title+" TEXT, " +  term_start + " TEXT, " +  term_end + " TEXT, " + term_got_courses+ " BOOL)");
         db.execSQL("CREATE TABLE "+courses+"("+course_id+" INTEGER PRIMARY KEY, "+course_title+" TEXT, " +  course_start + " TEXT, " +  course_end + " TEXT," +
-                " " + course_status+ " TEXT, "+ ins_name + " TEXT, " + ins_ph_number + " TEXT, " + ins_email + " TEXT, TERM_TITLE TEXT, "+course_notes+" TEXT)");
-        db.execSQL("CREATE TABLE "+terms_and_courses+"("+tcTerm_ID+" INTEGER, "+tcCourseID+" INTEGER, PRIMARY KEY("+tcTerm_ID+","+tcCourseID+"))");
-        //db.execSQL("CREATE TABLE "+instructors+"("+ins_id+" INTEGER PRIMARY KEY, "+ins_name+" TEXT, " +  ins_ph_number + " TEXT, " +  ins_email + " TEXT)");
+                " " + course_status+ " TEXT, "+ ins_name + " TEXT, " + ins_ph_number + " TEXT, " + ins_email + " TEXT, " + term_title + " TEXT, "+course_notes+" TEXT)");
+        //db.execSQL("CREATE TABLE "+terms_and_courses+"("+tcTerm_ID+" INTEGER, "+tcCourseID+" INTEGER, PRIMARY KEY("+tcTerm_ID+","+tcCourseID+"))");
         db.execSQL("CREATE TABLE "+assessments+"("+assess_id+" INTEGER PRIMARY KEY, "+ assess_title + " TEXT,"+perf_or_obj+" TEXT, " +assess_end + " TEXT, " +assess_associated_course+ " TEXT)");
 
 
@@ -73,39 +69,24 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists "+terms);
         db.execSQL("drop table if exists "+courses);
-        db.execSQL("drop table if exists INSTRUCTORS");
         db.execSQL("drop table if exists "+assessments);
         db.execSQL("drop table if exists "+terms_and_courses);
         onCreate(db);
     }
 
-    public int getInstructorID(String name){
-        String query = "SELECT INSTRUCTOR_ID FROM INSTRUCTORS WHERE INSTRUCTOR_NAME = " + name;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        cursor.moveToFirst();
-        return cursor.getInt(0);
-    }
+
     //method to get the courses associated with a specific term
     public List<Course> getCoursesForASpecificTermFromDB(Term term){
-        String termID = term.getTermId();
-        String query = "SELECT tc.Course_ID, c.COURSE_ID, c.COURSE_TITLE FROM COURSES c  JOIN TERMS_AND_COURSES tc ON tc.Course_ID = c.COURSE_ID " +
-                "WHERE tc.Term_ID = " + termID+"" ;
+        String termTitle = term.getTitle();
+        String query = "SELECT COURSE_TITLE FROM COURSES WHERE TERM_TITLE=" +"'" + termTitle + "'";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         if(cursor.moveToFirst()){
-            int i = 0;
             do{
-                int courseId = cursor.getInt(0);
-                String title = cursor.getString(1);
-                Course course = new Course(courseId, title);
+                String title = cursor.getString(0);
+                Course course = new Course(title);
                 courseList.add(course);
-                Log.d("obj", "getAllCoursesFromDB: " + courseList.get(i).getCourseId());
-                Log.d("ID", "getAllCoursesFromDB:" +course_id);
-                i++;
             }while(cursor.moveToNext());
-        }else{
-            //nothing to return
         }
         cursor.close();
         db.close();

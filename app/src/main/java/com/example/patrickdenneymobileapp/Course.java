@@ -12,8 +12,7 @@ public class Course {
     private String courseTermTitle;
     private String courseNotes;
 
-    public Course(int courseId, String courseTitle) {
-        this.courseId = courseId;
+    public Course(String courseTitle) {
         this.courseTitle = courseTitle;
     }
 

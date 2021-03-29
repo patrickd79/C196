@@ -22,7 +22,7 @@
             android:parentActivityName=".TermList" />
         <activity
             android:name=".CourseAdd"
-            android:parentActivityName=".CourseList" android:screenOrientation="portrait" />
+            android:parentActivityName=".CourseList" />
         <activity
             android:name=".AssessmentList"
             android:parentActivityName=".MainActivity" />

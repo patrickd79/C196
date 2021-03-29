@@ -43,6 +43,7 @@ public class TermList extends AppCompatActivity {
         super.onResume();
         //clear the old term list
         termList.clear();
+        courseList.clear();
         //repopulate list after the update or deletion from EditTerm
         populateTermList();
     }
@@ -77,16 +78,18 @@ public class TermList extends AppCompatActivity {
             courseList = db.getCoursesForASpecificTermFromDB(term);
             //convert the associated courses to a string to append to the termStrings list
             StringBuilder str = new StringBuilder();
-            for(int i = 0; i < courseList.size(); i++ ){
-                if(i == (courseList.size()-1)){
-                    str.append(courseList.get(i).getCourseTitle());
-                }else{
-                    str.append(courseList.get(i).getCourseTitle()).append(", ");
+                for (int i = 0; i < courseList.size(); i++) {
+                    if (i == (courseList.size() - 1)) {
+                        str.append(courseList.get(i).getCourseTitle());
+                    } else {
+                        str.append(courseList.get(i).getCourseTitle()).append(", ");
+                    }
+
                 }
 
-            }
-            String courses = str.toString();
-            termStrings.add("ID: " + term.getTermId() +  "\nTitle: " + term.getTitle() + "\nStart Date: " + term.getStart() + "\nEnd Date: " + term.getEnd() + "\nCourses: " + courses);
+                String courses = str.toString();
+                termStrings.add("ID: " + term.getTermId() + "\nTitle: " + term.getTitle() + "\nStart Date: " + term.getStart() + "\nEnd Date: " + term.getEnd() + "\nCourses: " + courses);
+
         }
         ArrayAdapter<String> termArray = new ArrayAdapter<String>(TermList.this, android.R.layout.simple_list_item_1, termStrings);
         termListView.setAdapter(termArray);
