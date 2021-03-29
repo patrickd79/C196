@@ -114,6 +114,25 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
         startActivity(refresh);
     }
 
+    public void updateCourse(View v){
+        try{
+            course.setCourseStart(String.valueOf(editTextDateEditCourseStart.getText()));
+            course.setCourseEnd(String.valueOf(editCourseEndTV.getText()));
+            course.setCourseStatus(editCourseStatusSpinner.getSelectedItem().toString());
+            course.setInstructorName(String.valueOf(editCourseInstructor.getText()));
+            course.setInstructorPhone(String.valueOf(editInsPhone.getText()));
+            course.setInstructorEmail(String.valueOf(editInsEmail.getText()));
+            course.setCourseTermTitle(courseEditAssociatedTermSpinner.getSelectedItem().toString());
+            course.setCourseNotes(String.valueOf(editCourseNotesTV.getText()));
+            Database db = new Database(EditCourse.this);
+            db.updateCourseInformation(course);
+            Intent refresh = new Intent(this, CourseList.class);
+            startActivity(refresh);
+        }catch(Exception e){
+            Toast.makeText(EditCourse.this, "Error updating course.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String selectedItem = parent.getItemAtPosition(position).toString();
