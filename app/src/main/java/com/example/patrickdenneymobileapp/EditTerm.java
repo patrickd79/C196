@@ -19,6 +19,8 @@ import static com.example.patrickdenneymobileapp.Database.*;
 public class EditTerm extends AppCompatActivity {
     //NEED TO ADD FUNCTIONALITY FOR UPDATING NEW TERM INFORMATION AND DELETING OLD TERM INFORMATION
     public static long termID;
+    public static String coursesForTerm = "";
+    public static String courseDisplay = "";
     public Term term;
     //declare the View components
     TextView editTermID;
@@ -39,6 +41,9 @@ public class EditTerm extends AppCompatActivity {
         Intent intent = getIntent();
         termID = intent.getLongExtra("id", TermList.termID);
         term = termList.get((int) termID);
+        //get courses string from the term list activity for this term
+        //coursesForTerm = intent.getStringExtra(TermList.courses);
+        //courseDisplay = TermList.courses;
         //setCoursesToTrue();
         //set the view components to their ids
         editTermID = findViewById(R.id.editTermIDTextView);
@@ -61,7 +66,7 @@ public class EditTerm extends AppCompatActivity {
             editTermTitle.setText(term.getTitle());
             editTermStart.setText(term.getStart());
             editTermEnd.setText(term.getEnd());
-            editCourses.setText(term.getCourseString());
+            editCourses.setText(TermList.courses);
             //term.getStart()
             //term.getEnd()
             //term.getCourses();

@@ -24,6 +24,7 @@ public class TermList extends AppCompatActivity {
     List<Term> termList;
     //list containing the associated courses for the term
     List<Course> courseList;
+    public static String courses = "";
 
 
     @Override
@@ -87,7 +88,7 @@ public class TermList extends AppCompatActivity {
 
                 }
 
-                String courses = str.toString();
+                courses = str.toString();
                 termStrings.add("ID: " + term.getTermId() + "\nTitle: " + term.getTitle() + "\nStart Date: " + term.getStart() + "\nEnd Date: " + term.getEnd() + "\nCourses: " + courses);
 
         }
@@ -103,6 +104,7 @@ public class TermList extends AppCompatActivity {
     public void openEditTermScreen(){
         Intent intent = new Intent(this, EditTerm.class);
         intent.putExtra("id", termID);
+        intent.putExtra("courses", courses.toString());
             startActivity(intent);
 
 
