@@ -24,7 +24,7 @@ public class EditTerm extends AppCompatActivity {
     public Term term;
     //declare the View components
     TextView editTermID;
-    EditText editTermTitle;
+    TextView editTermTitle;
     EditText editTermStart;
     EditText editTermEnd;
     TextView editCourses;
@@ -79,7 +79,7 @@ public class EditTerm extends AppCompatActivity {
     public void deleteTerm(View v){
         Log.d("term to delete", term.getTermId());
         Database db = new Database(EditTerm.this);
-        if(term.getCourses()){
+        if(TermList.courses.length() != 0){
             FragmentManager fragmentManager = getSupportFragmentManager();
             DeleteTermWithCoursesAlert dialog = new DeleteTermWithCoursesAlert();
             dialog.show(fragmentManager, "Please remove all courses from term before deleting.");
@@ -96,12 +96,11 @@ public class EditTerm extends AppCompatActivity {
     //method to add a new term when the add term btn is clicked
     public void updateTerm(View v){
         try{
-            term.setTitle(String.valueOf(editTermTitle.getText()));
             term.setStart(String.valueOf(editTermStart.getText()));
             term.setEnd(String.valueOf(editTermEnd.getText()));
-            if(term.getCourses()){
+            /*if(term.getCourses()){
                 term.setCourses(true);
-            }
+            }*/
             Database db = new Database(EditTerm.this);
             db.updateTermInformation(term);
             Intent refresh = new Intent(this, TermList.class);

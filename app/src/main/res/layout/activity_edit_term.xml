@@ -24,9 +24,10 @@
     <TextView
         android:id="@+id/editTermIDTextView"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="@string/term_id"
         android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/editTitle"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintHorizontal_bias="0.5"
@@ -73,16 +74,16 @@
         app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toBottomOf="@+id/editTitle" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTitle"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#BBBBBB"
-        android:ems="10"
-        android:hint="@string/enter_a_title_for_the_term"
         android:importantForAutofill="no"
         android:inputType="textShortMessage"
         android:textAlignment="center"
+        android:textColor="@color/btn"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/editStart"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintHorizontal_bias="0.5"
