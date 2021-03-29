@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".EditTerm">
 
-    <EditText
+    <TextView
         android:id="@+id/editTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="#BBBBBB"
         android:ems="10"
-        android:hint="@string/enter_a_title_for_the_term"
         android:importantForAutofill="no"
-        android:inputType="textShortMessage"
         android:textAlignment="center"
+        android:textColor="@color/btn"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="parent" />

@@ -55,7 +55,7 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
         termStrings.clear();
     }
 
-    public void loadFields(){
+    private void loadFields(){
         addCourseTitle = findViewById(R.id.addCourseTitleTV);
         addCourseStart = findViewById(R.id.editTextDateAddCourseStart);
         addCourseEnd = findViewById(R.id.addCourseEndTV);
@@ -63,17 +63,13 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
         instructorName = findViewById(R.id.addCourseInstructorName);
         instructorPhone = findViewById(R.id.addCourseInstructorPhone);
         instructorEmail = findViewById(R.id.addCourseInstructorEmail);
-
         //create the course status spinner functionality
         addCourseStatus = findViewById(R.id.addCourseStatusSpinner);
         ArrayAdapter<CharSequence> statusAdapter = ArrayAdapter.createFromResource(this, R.array.course_status_spinner_options, android.R.layout.simple_spinner_item);
         statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addCourseStatus.setAdapter(statusAdapter);
         addCourseStatus.setOnItemSelectedListener(this);
-
-
         // add course terms spinner functionality
-        //NEED TO BUILD A RESOURCE TO GET THE ASSOCIATED TERMS FROM THE DB
         fillTermStringsArray();
         courseAddAssociatedTermSpinner = findViewById(R.id.courseAddAssociatedTermSpinner);
         ArrayAdapter<String> termAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, termStrings);
@@ -82,7 +78,7 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
         courseAddAssociatedTermSpinner.setOnItemSelectedListener(this);
     }
 
-    public void fillTermStringsArray(){
+    private void fillTermStringsArray(){
         //create a db object
         Database db = new Database(CourseAdd.this);
         //get a list of the terms from the DB object

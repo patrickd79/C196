@@ -80,7 +80,6 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#BBBBBB"
         android:importantForAutofill="no"
-        android:inputType="textShortMessage"
         android:textAlignment="center"
         android:textColor="@color/btn"
         android:textSize="24sp"
