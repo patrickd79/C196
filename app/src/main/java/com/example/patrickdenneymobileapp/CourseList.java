@@ -22,6 +22,10 @@ public class CourseList extends AppCompatActivity {
     Database db;
     //list containing the terms to display
     List<Course> courseList;
+    //list of assessments associated with the course
+    List<String> assessments;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +53,12 @@ public class CourseList extends AppCompatActivity {
         //get a list of the terms from the DB object
         courseList = db.getAllCoursesFromDB();
 
+
         List<String> courseStrings = new ArrayList<>();
         for( Course course : courseList) {
-
             courseStrings.add("ID: " + course.getCourseId() + "  Title: " + course.getCourseTitle() + "\nStart Date: " + course.getCourseStart() + "  End Date: " + course.getCourseEnd() + "\nStatus: "
                     + course.getCourseStatus() + "\nInstructor: "+ course.getInstructorName()+ "\nInstructor Phone: "+ course.getInstructorPhone()
-                    + "\nInstructor Email: "+ course.getInstructorEmail() +"\nTerm: " + course.getCourseTermTitle()
+                    + "\nInstructor Email: "+ course.getInstructorEmail() +"\nTerm: " + course.getCourseTermTitle() + "\nAssessments: " + db.getAssessmentForACourse(course)
                     + "\nCourse Notes: " + course.getCourseNotes());
         }
         ArrayAdapter<String> courseArray = new ArrayAdapter<String>(CourseList.this, android.R.layout.simple_list_item_1, courseStrings);

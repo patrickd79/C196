@@ -22,6 +22,7 @@ import static com.example.patrickdenneymobileapp.Database.termList;
 
 public class EditCourse extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public static long courseID;
+
     private List<String> termStrings;
     public Course course;
     private TextView editCourseTitleTV;
@@ -33,8 +34,9 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
     private EditText editInsEmail;
     private Spinner courseEditAssociatedTermSpinner;
     private EditText editCourseNotesTV;
-    private Button updateCourseBtn;
-    private Button deleteCourseBtn;
+    private TextView editCourseAssociatedAssessments;
+    private Button delete;
+    private Button update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +57,15 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
         editInsEmail = findViewById(R.id.editCourseInsEmail);
         courseEditAssociatedTermSpinner = findViewById(R.id.courseEditAssociatedTermSpinner);
         editCourseNotesTV = findViewById(R.id.editCourseNotesTV);
-        updateCourseBtn = findViewById(R.id.updateCourseBtn);
-        deleteCourseBtn = findViewById(R.id.deleteCourseBtn);
+        editCourseAssociatedAssessments = findViewById(R.id.editCourseAssociatedAssessments);
+        delete = findViewById(R.id.deleteCourseBtn);
 
         loadCourse(courseID);
 
     }
 
     private void loadCourse(long id) {
+        Database db = new Database(EditCourse.this);
         //get course object from the course list of all courses in the Database class
         Course course = courseList.get((int) id);
         //place the course information in the text fields
@@ -74,6 +77,7 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
         editInsPhone.setText(course.getInstructorPhone());
         editInsEmail.setText(course.getInstructorEmail());
         editCourseNotesTV.setText(course.getCourseNotes());
+        editCourseAssociatedAssessments.setText(db.getAssessmentForACourse(course));
         //course status spinner settings
         editCourseStatusSpinner = findViewById(R.id.editCourseStatusSpinner);
         ArrayAdapter<CharSequence> statusAdapter = ArrayAdapter.createFromResource(this, R.array.course_status_spinner_options, android.R.layout.simple_spinner_item);
@@ -105,7 +109,7 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
     }
 
 
-    private void deleteCourse(View v) {
+    public void deleteCourse(View v) {
         Log.d("course to delete", String.valueOf(course.getCourseId()));
         Database db = new Database(EditCourse.this);
 

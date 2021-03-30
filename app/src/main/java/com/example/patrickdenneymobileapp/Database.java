@@ -73,6 +73,33 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("drop table if exists "+terms_and_courses);
         onCreate(db);
     }
+    public String getAssessmentForACourse(Course course){
+        List<String> assessments = new ArrayList<>();
+        String courseTitle = course.getCourseTitle();
+        StringBuilder str = new StringBuilder();
+        String query = "SELECT TITLE FROM ASSESSMENTS WHERE ASSOCIATED_COURSE=" +"'" + courseTitle + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            do{
+                String title = cursor.getString(0);
+                assessments.add(title);
+            }while(cursor.moveToNext());
+        }
+        if(assessments.size() != 0){
+            for(int i = 0; i < assessments.size(); i ++){
+                if(i == assessments.size() -1 ){
+                    str.append(assessments.get(i));
+                }else{
+                    str.append(assessments.get(i)).append(", ");
+                }
+            }
+        }
+        String assessmentStr = str.toString();
+        cursor.close();
+        db.close();
+        return assessmentStr;
+    }
 
 
     //method to get the courses associated with a specific term

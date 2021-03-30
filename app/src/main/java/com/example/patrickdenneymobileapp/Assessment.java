@@ -7,6 +7,10 @@ public class Assessment {
     private String assessmentEndDate;
     private String associatedCourseTitle;
 
+    public Assessment(String assessmentTitle) {
+        this.assessmentTitle = assessmentTitle;
+    }
+
     public Assessment(int assessmentID, String assessmentTitle, String perfOrObjective, String assessmentEndDate, String associatedCourseTitle) {
         this.assessmentID = assessmentID;
         this.assessmentTitle = assessmentTitle;
