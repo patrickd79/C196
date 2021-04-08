@@ -33,8 +33,10 @@ public class AssessmentList extends AppCompatActivity {
 
     protected void onResume(){
         super.onResume();
+        if(assessmentList != null){
+            assessmentList.clear();
+        }
 
-        assessmentList.clear();
         //repopulate list after the update or deletion from EditTerm
         populateAssessmentList();
     }

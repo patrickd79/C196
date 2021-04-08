@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <?xml version="1.0" encoding="utf-8"?>
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF"
@@ -18,11 +18,11 @@
 
             <EditText
                 android:id="@+id/editTermTitle"
-                android:layout_width="350dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
                 android:backgroundTint="#BBBBBB"
                 android:ems="10"
                 android:hint="@string/enter_a_title_for_the_term"
@@ -36,8 +36,8 @@
 
             <EditText
                 android:id="@+id/editTermStart"
-                android:layout_width="350dp"
-                android:layout_height="70dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="24dp"
@@ -52,8 +52,8 @@
 
             <EditText
                 android:id="@+id/editTermEnd"
-                android:layout_width="350dp"
-                android:layout_height="70dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="24dp"
@@ -68,7 +68,7 @@
 
             <Button
                 android:id="@+id/addTermBtn"
-                android:layout_width="150dp"
+                android:layout_width="0dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
@@ -76,8 +76,8 @@
                 android:backgroundTint="@color/btn"
                 android:onClick="addTerm"
                 android:text="@string/add_term"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/editTermEnd"
+                app:layout_constraintStart_toStartOf="@+id/editTermEnd"
                 app:layout_constraintTop_toBottomOf="@+id/editTermEnd" />
 
 

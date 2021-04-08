@@ -43,8 +43,13 @@ public class TermList extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         //clear the old term list
-        termList.clear();
-        courseList.clear();
+        if(termList!=null){
+            termList.clear();
+        }
+        if(courseList!=null){
+            courseList.clear();
+        }
+
         //repopulate list after the update or deletion from EditTerm
         populateTermList();
     }
