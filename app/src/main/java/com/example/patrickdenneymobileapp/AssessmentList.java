@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,7 @@ public class AssessmentList extends AppCompatActivity {
         // back button to parent activity
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         populateAssessmentList();
+        clickOnAssessment();
     }
 
     protected void onResume(){
@@ -57,8 +61,30 @@ public class AssessmentList extends AppCompatActivity {
         assessListView.setAdapter(assessmentArray);
     }
 
+    public void clickOnAssessment(){
+        assessListView = findViewById(R.id.addAssessListView);
+        assessListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
+                TextView item = (TextView) itemClicked;
+
+                //Test message to see that the correct item was clicked
+                String message = "Clicked on " + position + " Text: " + item.getText().toString();
+                Log.d("message ", message);
+                Log.d("Course ID ", String.valueOf(id));
+                assessID =  id;
+                openEditAssessmentScreen();
+            }
+        });
+    }
+
     public void openAddAssessmentScreen(View v){
         Intent intent = new Intent(this, AssessmentAdd.class);
+        startActivity(intent);
+    }
+    public void openEditAssessmentScreen(){
+        Intent intent = new Intent(this, EditAssessment.class);
+        intent.putExtra("id", assessID);
         startActivity(intent);
     }
 }

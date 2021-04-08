@@ -73,6 +73,24 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("drop table if exists "+terms_and_courses);
         onCreate(db);
     }
+
+
+
+
+
+
+
+    //CREATE AN UPDATE ASSESSMENT METHOD
+
+    //CREATE A DELETE ASSESSMENT METHOD
+
+
+
+
+
+
+
+
     public String getAssessmentForACourse(Course course){
         List<String> assessments = new ArrayList<>();
         String courseTitle = course.getCourseTitle();

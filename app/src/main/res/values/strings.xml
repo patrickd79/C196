@@ -69,4 +69,9 @@
     <string name="associated_course">Associated Course</string>
     <string name="assess_ID">assess ID</string>
     <string name="assessment_title">Assessment Title</string>
+    <string name="course_title">Course</string>
+    <string name="editAssessmentID">Assessment ID</string>
+    <string name="edit_Assessment_delete_btn">Delete Assessment</string>
+    <string name="update_assessment">UPDATE ASSESSMENT</string>
+    <string name="course">Course</string>
 </resources>

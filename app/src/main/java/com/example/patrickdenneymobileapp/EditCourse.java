@@ -35,8 +35,7 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
     private Spinner courseEditAssociatedTermSpinner;
     private EditText editCourseNotesTV;
     private TextView editCourseAssociatedAssessments;
-    private Button delete;
-    private Button update;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,7 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
         courseEditAssociatedTermSpinner = findViewById(R.id.courseEditAssociatedTermSpinner);
         editCourseNotesTV = findViewById(R.id.editCourseNotesTV);
         editCourseAssociatedAssessments = findViewById(R.id.editCourseAssociatedAssessments);
-        delete = findViewById(R.id.deleteCourseBtn);
+
 
         loadCourse(courseID);
 
