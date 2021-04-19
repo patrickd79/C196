@@ -123,4 +123,32 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
             Toast.makeText(CourseAdd.this, "Error adding course.", Toast.LENGTH_SHORT).show();
         }
     }
+    public void shareNotes(View view){
+        String notes = addCourseNotes.getText().toString();
+        String title = "Course notes for "+ addCourseTitle.getText().toString();
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, notes);
+        sendIntent.putExtra(Intent.EXTRA_TITLE, title);
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

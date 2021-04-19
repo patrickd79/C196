@@ -74,4 +74,7 @@
     <string name="edit_Assessment_delete_btn">Delete Assessment</string>
     <string name="update_assessment">UPDATE ASSESSMENT</string>
     <string name="course">Course</string>
+    <string name="current_type_of_exam">Current type of Exam</string>
+    <string name="current_associated_course">Current Associated Course</string>
+    <string name="sharenotes">share notes</string>
 </resources>

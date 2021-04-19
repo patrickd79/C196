@@ -46,9 +46,9 @@ public class AssessmentAdd extends AppCompatActivity implements AdapterView.OnIt
     }
     protected void onResume(){
         super.onResume();
-        //clear the old term list
+        //clear the old courses list
         courses.clear();
-        //repopulate list after the update or deletion from EditTerm
+        //repopulate list
         loadAddAssociatedCoursesSpinnerData();
     }
 

@@ -70,7 +70,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("drop table if exists "+terms);
         db.execSQL("drop table if exists "+courses);
         db.execSQL("drop table if exists "+assessments);
-        db.execSQL("drop table if exists "+terms_and_courses);
+        //db.execSQL("drop table if exists "+terms_and_courses);
         onCreate(db);
     }
 
@@ -82,8 +82,30 @@ public class Database extends SQLiteOpenHelper {
 
     //CREATE AN UPDATE ASSESSMENT METHOD
 
-    //CREATE A DELETE ASSESSMENT METHOD
+    public void updateAssessmentInformation(Assessment assessment){
+        //get a writeable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        //write SQL query
+        String updateQuery = "UPDATE "+assessments+ " SET "+assess_title+"= ?, "+perf_or_obj+"= ?, "+assess_end+"= ?, "+assess_associated_course+"= ? WHERE "+assess_id+"= ?";
+        //update table
+        db.execSQL(updateQuery, new String[]{assessment.getAssessmentTitle(), assessment.getPerfOrObjective(),
+                assessment.getAssessmentEndDate(), assessment.getAssociatedCourseTitle(), String.valueOf(assessment.getAssessmentID())});
 
+
+    }
+
+    //CREATE A DELETE ASSESSMENT METHOD
+    public boolean deleteAssessment(Assessment assessment) {
+        //get a writeable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM "+ assessments+ " WHERE "+assess_id+"=" + assessment.getAssessmentID();
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 
 

@@ -2,6 +2,7 @@ package com.example.patrickdenneymobileapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,13 +10,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import static com.example.patrickdenneymobileapp.Database.courseList;
 import static com.example.patrickdenneymobileapp.Database.termList;
@@ -61,6 +67,14 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
 
         loadCourse(courseID);
 
+    }
+    protected void onResume(){
+        super.onResume();
+        //clear the old terms list
+        termStrings.clear();
+        //repopulate list
+        fillTermStringsArray();
+        loadCourse(courseID);
     }
 
     private void loadCourse(long id) {
@@ -136,6 +150,8 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
         }
     }
 
+
+    //implement the AdapterView.OnItemSelectedListener methods
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String selectedItem = parent.getItemAtPosition(position).toString();
@@ -146,5 +162,27 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    public void shareNotesEdit(View view){
+        String notes = editCourseNotesTV.getText().toString();
+        String title = "Course notes for "+ editCourseNotesTV.getText().toString();
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, notes);
+        sendIntent.putExtra(Intent.EXTRA_TITLE, title);
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
+    }
+
 }
+
+
+
+
+
+
+
+
 

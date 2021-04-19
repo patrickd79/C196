@@ -77,11 +77,8 @@
             android:layout_height="70dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
             android:text="@string/you_can_add_assessments_to_the_course_after_you_add_the_course_select_the_course_from_the_course_list_and_add_any_assessments_there"
             android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addCourseNotesTV" />
 
@@ -105,16 +102,14 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/enter_course_notes"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:inputType="text"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/editCourseShareNotesBtn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/courseAddAssociatedTermSpinner" />
 
@@ -216,6 +211,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addCourseInstructorPhone" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/editCourseShareNotesBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/background"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toBottomOf="@+id/addCourseNotesTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/courseAddAssociatedTermSpinner"
+            app:srcCompat="@android:drawable/ic_menu_share" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
