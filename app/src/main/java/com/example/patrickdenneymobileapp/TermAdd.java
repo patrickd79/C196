@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class TermAdd extends AppCompatActivity {
@@ -17,6 +19,9 @@ public class TermAdd extends AppCompatActivity {
     EditText editTermStart;
     EditText editTermEnd;
     Button addTermBtn;
+    Date currentDate = new Date();
+    SimpleDateFormat dateFormat  = new SimpleDateFormat("MM/dd/yyyy");
+    String dateString = dateFormat.format(currentDate);
     // create the layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +32,11 @@ public class TermAdd extends AppCompatActivity {
         //set the view components to their ids
          editTermTitle = findViewById(R.id.editTermTitle);
          editTermStart = findViewById(R.id.editTermStart);
+         editTermStart.setHint(dateString);
          editTermEnd = findViewById(R.id.editTermEnd);
+         editTermEnd.setHint(dateString);
          addTermBtn = findViewById(R.id.addTermBtn);
+
 
     }
         //method to add a new term when the add term btn is clicked

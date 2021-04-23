@@ -2,6 +2,8 @@ package com.example.patrickdenneymobileapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +15,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import static com.example.patrickdenneymobileapp.Database.assessmentList;
@@ -31,6 +36,13 @@ public class EditAssessment extends AppCompatActivity implements AdapterView.OnI
     public static long assessID;
     public Assessment assessment;
     private List<Course> coursesList;
+    Date currentDate = new Date();
+    SimpleDateFormat dateFormat  = new SimpleDateFormat("MM/dd/yyyy");
+    String dateString = dateFormat.format(currentDate);
+
+    Date date;
+    Calendar calendar;
+
 
 
 
@@ -131,6 +143,11 @@ public class EditAssessment extends AppCompatActivity implements AdapterView.OnI
 
     public void updateAssessment(View v) {
         try {
+            //setup date for the notification alarm
+            date = dateFormat.parse(editAssessEndDateTV.getText().toString());
+            calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            setNotification(calendar.getTimeInMillis());
             //update the assessment setters
             assessment.setPerfOrObjective(editAssessPerfObjSpinner.getSelectedItem().toString());
             assessment.setAssessmentEndDate(editAssessEndDateTV.getText().toString());
@@ -144,6 +161,15 @@ public class EditAssessment extends AppCompatActivity implements AdapterView.OnI
         } catch (Exception e) {
             Toast.makeText(EditAssessment.this, "Error adding assessment.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void setNotification(long timeInMillis){
+        Intent intent = new Intent(EditAssessment.this, Notification.class);
+        intent.putExtra("key","assessment due" );
+        PendingIntent sender = PendingIntent.getBroadcast(EditAssessment.this,++MainActivity.notifyNum, intent, 0 );
+        AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
+
+        alarm.set(AlarmManager.RTC_WAKEUP, timeInMillis, sender);
     }
 
     public void deleteAssessment(View v) {

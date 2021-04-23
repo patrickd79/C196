@@ -223,7 +223,7 @@
             android:layout_marginEnd="24dp"
             android:backgroundTint="@color/background"
             android:clickable="true"
-            android:contentDescription="@string/sharenotes"
+            android:contentDescription="@string/share_notes"
             android:onClick="shareNotes"
             app:fabSize="mini"
             app:layout_constraintBottom_toBottomOf="@+id/addCourseNotesTV"

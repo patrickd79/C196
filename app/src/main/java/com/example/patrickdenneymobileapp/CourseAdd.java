@@ -14,7 +14,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -31,6 +33,9 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
     private EditText addCourseNotes;
     private List<Term> termList;
     private List<String> termStrings;
+    Date currentDate = new Date();
+    SimpleDateFormat dateFormat  = new SimpleDateFormat("MM/dd/yyyy");
+    String dateString = dateFormat.format(currentDate);
 
 
     @Override
@@ -58,7 +63,9 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
     private void loadFields(){
         addCourseTitle = findViewById(R.id.addCourseTitleTV);
         addCourseStart = findViewById(R.id.editTextDateAddCourseStart);
+        addCourseStart.setHint(dateString);
         addCourseEnd = findViewById(R.id.addCourseEndTV);
+        addCourseEnd.setHint(dateString);
         addCourseNotes = findViewById(R.id.addCourseNotesTV);
         instructorName = findViewById(R.id.addCourseInstructorName);
         instructorPhone = findViewById(R.id.addCourseInstructorPhone);

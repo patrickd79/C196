@@ -12,6 +12,7 @@ import com.example.patrickdenneymobileapp.R;
 import com.example.patrickdenneymobileapp.TermList;
 
 public class MainActivity extends AppCompatActivity {
+    public static int notifyNum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
