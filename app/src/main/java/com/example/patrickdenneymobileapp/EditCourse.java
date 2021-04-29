@@ -2,7 +2,9 @@ package com.example.patrickdenneymobileapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,7 +35,7 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
     private List<String> termStrings;
     public Course course;
     private TextView editCourseTitleTV;
-    private EditText editTextDateEditCourseStart;
+    private EditText editCourseStart;
     private EditText editCourseEndTV;
     private Spinner editCourseStatusSpinner;
     private EditText editCourseInstructor;
@@ -41,6 +44,11 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
     private Spinner courseEditAssociatedTermSpinner;
     private EditText editCourseNotesTV;
     private TextView editCourseAssociatedAssessments;
+    Date currentDate = new Date();
+    SimpleDateFormat dateFormat  = new SimpleDateFormat("MM/dd/yyyy");
+    String dateString = dateFormat.format(currentDate);
+    Date date;
+    Calendar calendar;
 
 
     @Override
@@ -54,7 +62,7 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
         course = courseList.get((int) courseID);
         //set the view components to their ids
         editCourseTitleTV = findViewById(R.id.editCourseTitleTV);
-        editTextDateEditCourseStart = findViewById(R.id.editTextDateEditCourseStart);
+        editCourseStart = findViewById(R.id.editTextDateEditCourseStart);
         editCourseEndTV = findViewById(R.id.editCourseEndTV);
         editCourseStatusSpinner = findViewById(R.id.editCourseStatusSpinner);
         editCourseInstructor = findViewById(R.id.editCourseInstructor);
@@ -84,7 +92,7 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
         //place the course information in the text fields
         String titleField = "Course ID: " + course.getCourseId() + "    " + course.getCourseTitle();
         editCourseTitleTV.setText(titleField);
-        editTextDateEditCourseStart.setText(course.getCourseStart());
+        editCourseStart.setText(course.getCourseStart());
         editCourseEndTV.setText(course.getCourseEnd());
         editCourseInstructor.setText(course.getInstructorName());
         editInsPhone.setText(course.getInstructorPhone());
@@ -133,7 +141,7 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
 
     public void updateCourse(View v){
         try{
-            course.setCourseStart(String.valueOf(editTextDateEditCourseStart.getText()));
+            course.setCourseStart(String.valueOf(editCourseStart.getText()));
             course.setCourseEnd(String.valueOf(editCourseEndTV.getText()));
             course.setCourseStatus(editCourseStatusSpinner.getSelectedItem().toString());
             course.setInstructorName(String.valueOf(editCourseInstructor.getText()));
@@ -174,6 +182,44 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
 
         Intent shareIntent = Intent.createChooser(sendIntent, null);
         startActivity(shareIntent);
+    }
+
+    public void setReminderStartBtn(View v) throws ParseException {
+        //setup date for the notification alarm
+        date = dateFormat.parse(editCourseStart.getText().toString());
+        calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        setNotificationStart(calendar.getTimeInMillis());
+    }
+    public void setReminderEndBtn(View v) throws ParseException {
+
+        //setup date for the notification alarm
+        date = dateFormat.parse(editCourseEndTV.getText().toString());
+        calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        setNotificationEnd(calendar.getTimeInMillis());
+    }
+    public void setNotificationStart(long timeInMillis){
+
+        Intent intent = new Intent(EditCourse.this, Notification.class);
+        intent.putExtra("key",editCourseTitleTV.getText().toString() + " course starts today!" );
+        PendingIntent sender = PendingIntent.getBroadcast(EditCourse.this,++MainActivity.notifyNum, intent, 0 );
+        AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
+        //these are for testing the alert
+        //Calendar now = Calendar.getInstance();
+        //long later  = now.getTimeInMillis() + 5000;
+        alarm.set(AlarmManager.RTC_WAKEUP, timeInMillis, sender);
+    }
+    public void setNotificationEnd(long timeInMillis){
+
+        Intent intent = new Intent(EditCourse.this, Notification.class);
+        intent.putExtra("key",editCourseTitleTV.getText().toString() + " course ends today!" );
+        PendingIntent sender = PendingIntent.getBroadcast(EditCourse.this,++MainActivity.notifyNum, intent, 0 );
+        AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
+        //these are for testing the alert
+        //Calendar now = Calendar.getInstance();
+        //long later  = now.getTimeInMillis() + 5000;
+        alarm.set(AlarmManager.RTC_WAKEUP, timeInMillis, sender);
     }
 
 }

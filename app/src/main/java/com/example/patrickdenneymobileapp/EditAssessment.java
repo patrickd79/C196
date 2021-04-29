@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -143,11 +144,6 @@ public class EditAssessment extends AppCompatActivity implements AdapterView.OnI
 
     public void updateAssessment(View v) {
         try {
-            //setup date for the notification alarm
-            date = dateFormat.parse(editAssessEndDateTV.getText().toString());
-            calendar = Calendar.getInstance();
-            calendar.setTime(date);
-            setNotification(calendar.getTimeInMillis());
             //update the assessment setters
             assessment.setPerfOrObjective(editAssessPerfObjSpinner.getSelectedItem().toString());
             assessment.setAssessmentEndDate(editAssessEndDateTV.getText().toString());
@@ -161,6 +157,13 @@ public class EditAssessment extends AppCompatActivity implements AdapterView.OnI
         } catch (Exception e) {
             Toast.makeText(EditAssessment.this, "Error adding assessment.", Toast.LENGTH_SHORT).show();
         }
+    }
+    public void setReminderBtn(View v) throws ParseException {
+        //setup date for the notification alarm
+        date = dateFormat.parse(editAssessEndDateTV.getText().toString());
+        calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        setNotification(calendar.getTimeInMillis());
     }
 
     public void setNotification(long timeInMillis){

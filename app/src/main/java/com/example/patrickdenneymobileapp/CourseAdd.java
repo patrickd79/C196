@@ -1,5 +1,7 @@
 package com.example.patrickdenneymobileapp;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,8 +16,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
@@ -36,6 +40,8 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
     Date currentDate = new Date();
     SimpleDateFormat dateFormat  = new SimpleDateFormat("MM/dd/yyyy");
     String dateString = dateFormat.format(currentDate);
+    Date date;
+    Calendar calendar;
 
 
     @Override
@@ -141,6 +147,43 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
 
         Intent shareIntent = Intent.createChooser(sendIntent, null);
         startActivity(shareIntent);
+    }
+
+    public void setReminderStartBtn(View v) throws ParseException {
+        //setup date for the notification alarm
+        date = dateFormat.parse(addCourseStart.getText().toString());
+        calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        setNotificationStart(calendar.getTimeInMillis());
+    }
+    public void setReminderEndBtn(View v) throws ParseException {
+        //setup date for the notification alarm
+        date = dateFormat.parse(addCourseEnd.getText().toString());
+        calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        setNotificationEnd(calendar.getTimeInMillis());
+    }
+    public void setNotificationStart(long timeInMillis){
+
+        Intent intent = new Intent(CourseAdd.this, Notification.class);
+        intent.putExtra("key",addCourseTitle.getText().toString() + " course starts today!" );
+        PendingIntent sender = PendingIntent.getBroadcast(CourseAdd.this,++MainActivity.notifyNum, intent, 0 );
+        AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
+        //these are for testing the alert
+        //Calendar now = Calendar.getInstance();
+        //long later  = now.getTimeInMillis() + 5000;
+        alarm.set(AlarmManager.RTC_WAKEUP, timeInMillis, sender);
+    }
+    public void setNotificationEnd(long timeInMillis){
+
+        Intent intent = new Intent(CourseAdd.this, Notification.class);
+        intent.putExtra("key",addCourseTitle.getText().toString() + " course ends today!" );
+        PendingIntent sender = PendingIntent.getBroadcast(CourseAdd.this,++MainActivity.notifyNum, intent, 0 );
+        AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
+        //these are for testing the alert
+        //Calendar now = Calendar.getInstance();
+        //long later  = now.getTimeInMillis() + 5000;
+        alarm.set(AlarmManager.RTC_WAKEUP, timeInMillis, sender);
     }
 }
 

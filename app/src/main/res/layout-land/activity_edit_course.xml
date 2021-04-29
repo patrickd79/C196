@@ -72,7 +72,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:drawable/spinner_background"
-            app:layout_constraintBottom_toTopOf="@+id/guideline40"
             app:layout_constraintEnd_toStartOf="@+id/guideline38"
             app:layout_constraintStart_toStartOf="@+id/guideline37"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -82,12 +81,13 @@
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:text="@string/status"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline39" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateEditCourseStart" />
 
         <EditText
             android:id="@+id/editCourseInstructor"
@@ -95,12 +95,12 @@
             android:layout_height="wrap_content"
             android:hint="@string/instructor_name"
             android:imeOptions="actionDone"
+            android:importantForAutofill="no"
             android:inputType="textShortMessage"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline38"
             app:layout_constraintStart_toStartOf="@+id/guideline37"
-            app:layout_constraintTop_toTopOf="@+id/guideline40"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/editCourseStatusSpinner" />
 
         <Spinner
             android:id="@+id/courseEditAssociatedTermSpinner"
@@ -109,12 +109,10 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:background="@android:drawable/spinner_background"
-            app:layout_constraintBottom_toTopOf="@+id/guideline43"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
-            app:layout_constraintVertical_bias="0.0"
             tools:visibility="visible" />
 
         <TextView
@@ -122,61 +120,67 @@
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="32dp"
             android:text="@string/associated_term"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline41" />
+            app:layout_constraintTop_toBottomOf="@+id/editCourseInsEmail" />
 
         <EditText
             android:id="@+id/editCourseNotesTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:ems="10"
             android:gravity="start|top"
             android:hint="@string/enter_course_notes"
             android:imeOptions="actionDone"
+            android:importantForAutofill="no"
             android:inputType="textShortMessage"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline38"
             app:layout_constraintStart_toStartOf="@+id/guideline37"
-            app:layout_constraintTop_toTopOf="@+id/guideline42"
-            android:importantForAutofill="no" />
+            app:layout_constraintTop_toBottomOf="@+id/editCourseAssociatedAssessments" />
 
         <TextView
             android:id="@+id/editCourseAssocAssessmentMessageText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="@string/to_add_or_remove_associated_assessments_use_the_assessment_edit_function"
             android:textAlignment="center"
-            app:layout_constraintBottom_toTopOf="@+id/guideline36"
             app:layout_constraintEnd_toStartOf="@+id/guideline38"
             app:layout_constraintStart_toStartOf="@+id/guideline37"
             app:layout_constraintTop_toBottomOf="@+id/editCourseNotesTV" />
 
         <Button
             android:id="@+id/updateCourseBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:onClick="updateCourse"
             android:text="@string/update_course"
-            app:layout_constraintBottom_toTopOf="@+id/guideline11"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline37"
-            app:layout_constraintTop_toTopOf="@+id/guideline36" />
+            app:layout_constraintTop_toBottomOf="@+id/editCourseAssocAssessmentMessageText" />
 
         <Button
             android:id="@+id/deleteCourseBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:onClick="deleteCourse"
             android:text="@string/delete_course"
-            app:layout_constraintBottom_toTopOf="@+id/guideline11"
             app:layout_constraintEnd_toStartOf="@+id/guideline38"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="@+id/guideline36" />
+            app:layout_constraintTop_toBottomOf="@+id/editCourseAssocAssessmentMessageText" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -184,13 +188,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.93" />
 
         <EditText
             android:id="@+id/editCourseInsPhone"
@@ -213,20 +210,12 @@
             android:ems="10"
             android:hint="@string/instructor_email"
             android:imeOptions="actionDone"
+            android:importantForAutofill="no"
             android:inputType="textEmailAddress"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline41"
             app:layout_constraintEnd_toStartOf="@+id/guideline38"
             app:layout_constraintStart_toStartOf="@+id/guideline37"
-            app:layout_constraintTop_toBottomOf="@+id/editCourseInsPhone"
-            android:importantForAutofill="no" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline36"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.85" />
+            app:layout_constraintTop_toBottomOf="@+id/editCourseInsPhone" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline37"
@@ -243,78 +232,57 @@
             app:layout_constraintGuide_percent="0.95" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline39"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.15595075" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline40"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.25" />
-
-        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline41"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.42" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline42"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.65663475" />
-
         <TextView
             android:id="@+id/editCourseAssociatedAssessments"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:hint="@string/associated_assessments"
             android:textAlignment="center"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/guideline44"
             app:layout_constraintEnd_toStartOf="@+id/guideline38"
             app:layout_constraintStart_toStartOf="@+id/guideline37"
-            app:layout_constraintTop_toTopOf="@+id/guideline43" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline43"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.53" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline44"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.63" />
+            app:layout_constraintTop_toBottomOf="@+id/associatedAssessLabel" />
 
         <TextView
             android:id="@+id/associatedAssessLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="@string/associated_course"
-            app:layout_constraintBottom_toTopOf="@+id/editCourseAssociatedAssessments"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline43" />
+            app:layout_constraintTop_toBottomOf="@+id/courseEditAssociatedTermSpinner" />
 
         <Button
-            android:id="@+id/editCourseSetReminderBtn"
-            android:layout_width="wrap_content"
+            android:id="@+id/editCourseSetReminderStartBtn"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/set_reminder"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:onClick="setReminderStartBtn"
+            android:text="@string/set_reminder_for_start"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline37"
+            app:layout_constraintTop_toBottomOf="@+id/deleteCourseBtn" />
+
+        <Button
+            android:id="@+id/addCourseSetReminderEndBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:onClick="setReminderEndBtn"
+            android:text="@string/set_reminder_for_end"
+            app:layout_constraintEnd_toStartOf="@+id/guideline38"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/deleteCourseBtn" />
 
 

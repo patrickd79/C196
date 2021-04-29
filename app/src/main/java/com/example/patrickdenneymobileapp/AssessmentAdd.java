@@ -16,6 +16,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -72,11 +73,7 @@ public class AssessmentAdd extends AppCompatActivity implements AdapterView.OnIt
         Assessment assessment;
 
         try {
-            //setup date for the notification alarm
-            date = dateFormat.parse(addAssessmentEnd.getText().toString());
-            calendar = Calendar.getInstance();
-            calendar.setTime(date);
-            setNotification(calendar.getTimeInMillis());
+
 
             //create an Assessment object instance
             assessment = new Assessment(addAssessmentTitle.getText().toString(), addAssessPerfOrObj.getSelectedItem().toString(), addAssessmentEnd.getText().toString(),
@@ -115,8 +112,18 @@ public class AssessmentAdd extends AppCompatActivity implements AdapterView.OnIt
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // set courseAdapter as adapter
         addAssessAssociatedCourseSpinner.setAdapter(courseAdapter);
+
+    }
+
+    public void setReminderBtn(View v) throws ParseException {
+        //setup date for the notification alarm
+        date = dateFormat.parse(addAssessmentEnd.getText().toString());
+        calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        setNotification(calendar.getTimeInMillis());
     }
     public void setNotification(long timeInMillis){
+
         Intent intent = new Intent(AssessmentAdd.this, Notification.class);
         intent.putExtra("key",addAssessmentTitle.getText().toString() + " assessment is due today!" );
         PendingIntent sender = PendingIntent.getBroadcast(AssessmentAdd.this,++MainActivity.notifyNum, intent, 0 );
