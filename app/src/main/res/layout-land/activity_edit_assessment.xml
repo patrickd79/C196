@@ -66,19 +66,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editAssessmentCurrentCourse" />
 
-        <Button
-            android:id="@+id/updateAssessmentBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:background="@color/btn"
-            android:text="@string/update_assessment"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editAssessAssociatedCourseSpinner" />
-
         <TextView
             android:id="@+id/editAssessmentTitleTV"
             android:layout_width="0dp"
@@ -107,12 +94,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
+            android:onClick="deleteAssessment"
             android:text="@string/edit_Assessment_delete_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateAssessmentBtn" />
+            tools:layout_editor_absoluteY="395dp" />
 
         <TextView
             android:id="@+id/currentTypeExamLabel"
@@ -123,6 +110,31 @@
             app:layout_constraintEnd_toEndOf="@+id/editAssessPerfObjSpinner"
             app:layout_constraintStart_toStartOf="@+id/editAssessPerfObjSpinner"
             app:layout_constraintTop_toBottomOf="@+id/editAssessEndDateTV" />
+
+        <Button
+            android:id="@+id/editAssessmentSetReminderBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/set_reminder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editAssessAssociatedCourseSpinner" />
+
+        <Button
+            android:id="@+id/updateAssessmentBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:onClick="updateAssessment"
+            android:text="@string/update_assessment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editAssessmentSetReminderBtn" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

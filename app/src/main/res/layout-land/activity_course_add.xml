@@ -84,17 +84,14 @@
 
         <Button
             android:id="@+id/addCourseToDBBtn"
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:onClick="addCourse"
             android:text="@string/add_course"
             android:textColor="@color/background"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addCourseAddAssessmentMessage" />
 
         <EditText
@@ -223,7 +220,18 @@
             app:layout_constraintBottom_toBottomOf="@+id/addCourseNotesTV"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/courseAddAssociatedTermSpinner"
-            app:srcCompat="@android:drawable/ic_menu_share" />
+            app:srcCompat="@android:drawable/ic_menu_share"
+            android:contentDescription="TODO" />
+
+        <Button
+            android:id="@+id/addCourseSetReminderBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/set_reminder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addCourseAddAssessmentMessage" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -77,4 +77,5 @@
     <string name="current_type_of_exam">Current type of Exam</string>
     <string name="current_associated_course">Current Associated Course</string>
     <string name="share_notes">share notes</string>
+    <string name="set_reminder">Set Reminder</string>
 </resources>
