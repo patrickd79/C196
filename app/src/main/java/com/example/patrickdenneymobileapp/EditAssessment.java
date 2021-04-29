@@ -168,7 +168,7 @@ public class EditAssessment extends AppCompatActivity implements AdapterView.OnI
 
     public void setNotification(long timeInMillis){
         Intent intent = new Intent(EditAssessment.this, Notification.class);
-        intent.putExtra("key","assessment due" );
+        intent.putExtra("key",editAssessmentTitleTV.getText().toString() + " assessment is due on " + editAssessEndDateTV.getText().toString());
         PendingIntent sender = PendingIntent.getBroadcast(EditAssessment.this,++MainActivity.notifyNum, intent, 0 );
         AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
 

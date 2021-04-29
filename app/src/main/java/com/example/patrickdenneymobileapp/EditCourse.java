@@ -202,7 +202,7 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
     public void setNotificationStart(long timeInMillis){
 
         Intent intent = new Intent(EditCourse.this, Notification.class);
-        intent.putExtra("key",editCourseTitleTV.getText().toString() + " course starts today!" );
+        intent.putExtra("key",editCourseTitleTV.getText().toString() + " course starts on "+ editCourseStart.getText().toString());
         PendingIntent sender = PendingIntent.getBroadcast(EditCourse.this,++MainActivity.notifyNum, intent, 0 );
         AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
         //these are for testing the alert
@@ -213,7 +213,7 @@ public class EditCourse extends AppCompatActivity implements AdapterView.OnItemS
     public void setNotificationEnd(long timeInMillis){
 
         Intent intent = new Intent(EditCourse.this, Notification.class);
-        intent.putExtra("key",editCourseTitleTV.getText().toString() + " course ends today!" );
+        intent.putExtra("key",editCourseTitleTV.getText().toString() + " course ends on " + editCourseEndTV.getText().toString());
         PendingIntent sender = PendingIntent.getBroadcast(EditCourse.this,++MainActivity.notifyNum, intent, 0 );
         AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
         //these are for testing the alert

@@ -166,7 +166,7 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
     public void setNotificationStart(long timeInMillis){
 
         Intent intent = new Intent(CourseAdd.this, Notification.class);
-        intent.putExtra("key",addCourseTitle.getText().toString() + " course starts today!" );
+        intent.putExtra("key",addCourseTitle.getText().toString() + " course starts on " + addCourseStart.getText().toString());
         PendingIntent sender = PendingIntent.getBroadcast(CourseAdd.this,++MainActivity.notifyNum, intent, 0 );
         AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
         //these are for testing the alert
@@ -177,7 +177,7 @@ public class CourseAdd extends AppCompatActivity implements AdapterView.OnItemSe
     public void setNotificationEnd(long timeInMillis){
 
         Intent intent = new Intent(CourseAdd.this, Notification.class);
-        intent.putExtra("key",addCourseTitle.getText().toString() + " course ends today!" );
+        intent.putExtra("key",addCourseTitle.getText().toString() + " course ends on " + addCourseEnd.getText().toString());
         PendingIntent sender = PendingIntent.getBroadcast(CourseAdd.this,++MainActivity.notifyNum, intent, 0 );
         AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
         //these are for testing the alert

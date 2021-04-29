@@ -125,7 +125,7 @@ public class AssessmentAdd extends AppCompatActivity implements AdapterView.OnIt
     public void setNotification(long timeInMillis){
 
         Intent intent = new Intent(AssessmentAdd.this, Notification.class);
-        intent.putExtra("key",addAssessmentTitle.getText().toString() + " assessment is due today!" );
+        intent.putExtra("key",addAssessmentTitle.getText().toString() + " assessment is due on " + addAssessmentEnd.getText().toString());
         PendingIntent sender = PendingIntent.getBroadcast(AssessmentAdd.this,++MainActivity.notifyNum, intent, 0 );
         AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
         //these are for testing the alert
