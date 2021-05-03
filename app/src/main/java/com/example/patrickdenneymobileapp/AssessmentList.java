@@ -54,8 +54,11 @@ public class AssessmentList extends AppCompatActivity {
         List<String> assessStrings = new ArrayList<>();
         for( Assessment assess : assessmentList) {
 
-            assessStrings.add("ID:  " + assess.getAssessmentID() + "    Title:  " + assess.getAssessmentTitle() + "\nAssessment Type:  "+ assess.getPerfOrObjective()+"\nEnd date:  " + assess.getAssessmentEndDate()+
-            "\nCourse:  "+ assess.getAssociatedCourseTitle());
+            assessStrings.add("ID:  " + assess.getAssessmentID() + "    Title:  " + assess.getAssessmentTitle() +
+                    "\nAssessment Type:  "+ assess.getPerfOrObjective()+
+                    "\nStart date:  " + assess.getAssessmentStartDate()+
+                    "\nEnd date:  " + assess.getAssessmentEndDate()+
+                    "\nCourse:  "+ assess.getAssociatedCourseTitle());
         }
         ArrayAdapter<String> assessmentArray = new ArrayAdapter<String>(AssessmentList.this, android.R.layout.simple_list_item_1, assessStrings);
         assessListView.setAdapter(assessmentArray);

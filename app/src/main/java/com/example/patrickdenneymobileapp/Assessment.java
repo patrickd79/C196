@@ -4,11 +4,28 @@ public class Assessment {
     private int assessmentID;
     private String assessmentTitle;
     private String perfOrObjective;
+    private String assessmentStartDate;
     private String assessmentEndDate;
     private String associatedCourseTitle;
 
     public Assessment(String assessmentTitle) {
         this.assessmentTitle = assessmentTitle;
+    }
+
+    public Assessment(int assessmentID, String assessmentTitle, String perfOrObjective, String assessmentStartDate, String assessmentEndDate, String associatedCourseTitle) {
+        this.assessmentID = assessmentID;
+        this.assessmentTitle = assessmentTitle;
+        this.perfOrObjective = perfOrObjective;
+        this.assessmentStartDate = assessmentStartDate;
+        this.assessmentEndDate = assessmentEndDate;
+        this.associatedCourseTitle = associatedCourseTitle;
+    }
+    public Assessment(String assessmentTitle, String perfOrObjective, String assessmentStartDate, String assessmentEndDate, String associatedCourseTitle) {
+        this.assessmentTitle = assessmentTitle;
+        this.perfOrObjective = perfOrObjective;
+        this.assessmentStartDate = assessmentStartDate;
+        this.assessmentEndDate = assessmentEndDate;
+        this.associatedCourseTitle = associatedCourseTitle;
     }
 
     public Assessment(int assessmentID, String assessmentTitle, String perfOrObjective, String assessmentEndDate, String associatedCourseTitle) {
@@ -54,6 +71,14 @@ public class Assessment {
 
     public void setPerfOrObjective(String perfOrObjective) {
         this.perfOrObjective = perfOrObjective;
+    }
+
+    public String getAssessmentStartDate() {
+        return assessmentStartDate;
+    }
+
+    public void setAssessmentStartDate(String assessmentStartDate) {
+        this.assessmentStartDate = assessmentStartDate;
     }
 
     public String getAssessmentEndDate() {

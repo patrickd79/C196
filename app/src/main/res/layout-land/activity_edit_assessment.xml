@@ -94,13 +94,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:onClick="deleteAssessment"
             android:text="@string/edit_Assessment_delete_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateAssessmentBtn" />
+            app:layout_constraintStart_toEndOf="@+id/space2"
+            app:layout_constraintTop_toBottomOf="@+id/editAssessmentSetReminderStartBtn" />
 
         <TextView
             android:id="@+id/currentTypeExamLabel"
@@ -113,15 +113,15 @@
             app:layout_constraintTop_toBottomOf="@+id/editAssessEndDateTV" />
 
         <Button
-            android:id="@+id/editAssessmentSetReminderBtn"
+            android:id="@+id/editAssessmentSetReminderStartBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:onClick="setReminderBtn"
-            android:text="@string/set_reminder"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="setReminderStartBtn"
+            android:text="@string/set_reminder_for_start"
+            app:layout_constraintEnd_toStartOf="@+id/space"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editAssessAssociatedCourseSpinner" />
 
@@ -130,13 +130,44 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:onClick="updateAssessment"
             android:text="@string/update_assessment"
+            app:layout_constraintEnd_toStartOf="@+id/space2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editAssessmentSetReminderStartBtn" />
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editAssessmentSetReminderBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/editAssessAssociatedCourseSpinner" />
+
+        <Button
+            android:id="@+id/editAssessmentSetReminderEndBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:onClick="setReminderEndBtn"
+            android:text="@string/set_reminder_for_end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/space"
+            app:layout_constraintTop_toBottomOf="@+id/editAssessAssociatedCourseSpinner" />
+
+        <Space
+            android:id="@+id/space2"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/space" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

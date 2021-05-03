@@ -27,6 +27,7 @@ import java.util.Objects;
 public class AssessmentAdd extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private TextView addAssessmentTitle;
     private TextView addAssessmentEnd;
+    private TextView addAssessmentStart;
     private Spinner addAssessPerfOrObj;
     private Spinner addAssessAssociatedCourseSpinner;
     List<Course> courses;
@@ -45,6 +46,9 @@ public class AssessmentAdd extends AppCompatActivity implements AdapterView.OnIt
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         // add assess title field
         addAssessmentTitle = findViewById(R.id.addAssessTitleTV);
+        //add assess start date field
+        addAssessmentStart = findViewById(R.id.addAssessStartDateTV);
+        addAssessmentStart.setHint(dateString);
         //add assess end date field
         addAssessmentEnd = findViewById(R.id.addAssessEndDateTV);
         addAssessmentEnd.setHint(dateString);
@@ -76,7 +80,7 @@ public class AssessmentAdd extends AppCompatActivity implements AdapterView.OnIt
 
 
             //create an Assessment object instance
-            assessment = new Assessment(addAssessmentTitle.getText().toString(), addAssessPerfOrObj.getSelectedItem().toString(), addAssessmentEnd.getText().toString(),
+            assessment = new Assessment(addAssessmentTitle.getText().toString(), addAssessPerfOrObj.getSelectedItem().toString(), addAssessmentStart.getText().toString(), addAssessmentEnd.getText().toString(),
                     addAssessAssociatedCourseSpinner.getSelectedItem().toString() );
             //create a db object
             Database db = new Database(AssessmentAdd.this);
@@ -115,14 +119,14 @@ public class AssessmentAdd extends AppCompatActivity implements AdapterView.OnIt
 
     }
 
-    public void setReminderBtn(View v) throws ParseException {
+    public void setReminderEndBtn(View v) throws ParseException {
         //setup date for the notification alarm
         date = dateFormat.parse(addAssessmentEnd.getText().toString());
         calendar = Calendar.getInstance();
         calendar.setTime(date);
-        setNotification(calendar.getTimeInMillis());
+        setEndNotification(calendar.getTimeInMillis());
     }
-    public void setNotification(long timeInMillis){
+    public void setEndNotification(long timeInMillis){
 
         Intent intent = new Intent(AssessmentAdd.this, Notification.class);
         intent.putExtra("key",addAssessmentTitle.getText().toString() + " assessment is due on " + addAssessmentEnd.getText().toString());
@@ -131,9 +135,25 @@ public class AssessmentAdd extends AppCompatActivity implements AdapterView.OnIt
         //these are for testing the alert
         //Calendar now = Calendar.getInstance();
         //long later  = now.getTimeInMillis() + 5000;
+        alarm.set(AlarmManager.RTC_WAKEUP, timeInMillis, sender);
+    }
 
+    public void setReminderStartBtn(View v) throws ParseException {
+        //setup date for the notification alarm
+        date = dateFormat.parse(addAssessmentStart.getText().toString());
+        calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        setStartNotification(calendar.getTimeInMillis());
+    }
+    public void setStartNotification(long timeInMillis){
 
-
+        Intent intent = new Intent(AssessmentAdd.this, Notification.class);
+        intent.putExtra("key",addAssessmentTitle.getText().toString() + " assessment starts on " + addAssessmentStart.getText().toString());
+        PendingIntent sender = PendingIntent.getBroadcast(AssessmentAdd.this,++MainActivity.notifyNum, intent, 0 );
+        AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
+        //these are for testing the alert
+        //Calendar now = Calendar.getInstance();
+        //long later  = now.getTimeInMillis() + 5000;
         alarm.set(AlarmManager.RTC_WAKEUP, timeInMillis, sender);
     }
 

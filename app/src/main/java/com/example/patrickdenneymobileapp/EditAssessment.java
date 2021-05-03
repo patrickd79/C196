@@ -29,6 +29,7 @@ import static com.example.patrickdenneymobileapp.Database.termList;
 public class EditAssessment extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public TextView editAssessmentIDTV;
     public TextView editAssessmentTitleTV;
+    public TextView editAssessStartDateTV;
     public TextView editAssessEndDateTV;
     public TextView currentTypeExamLabel;
     public Spinner editAssessPerfObjSpinner;
@@ -73,6 +74,7 @@ public class EditAssessment extends AppCompatActivity implements AdapterView.OnI
         //set views to ids
         editAssessmentIDTV = findViewById(R.id.editAssessmentIDTV);
         editAssessmentTitleTV = findViewById(R.id.editAssessmentTitleTV);
+        editAssessStartDateTV = findViewById(R.id.editAssessStartDateTV);
         editAssessEndDateTV = findViewById(R.id.editAssessEndDateTV);
         currentTypeExamLabel = findViewById(R.id.currentTypeExamLabel);
         editAssessPerfObjSpinner = findViewById(R.id.editAssessPerfObjSpinner);
@@ -100,6 +102,7 @@ public class EditAssessment extends AppCompatActivity implements AdapterView.OnI
         String titleField = "Assessment ID: " + assessment.getAssessmentID();
         editAssessmentIDTV.setText(titleField);
         editAssessmentTitleTV.setText(assessment.getAssessmentTitle());
+        editAssessStartDateTV.setText(assessment.getAssessmentStartDate());
         editAssessEndDateTV.setText(assessment.getAssessmentEndDate());
         String currentExamType = "Current exam Type: " + assessment.getPerfOrObjective();
         currentTypeExamLabel.setText(currentExamType);
@@ -146,6 +149,7 @@ public class EditAssessment extends AppCompatActivity implements AdapterView.OnI
         try {
             //update the assessment setters
             assessment.setPerfOrObjective(editAssessPerfObjSpinner.getSelectedItem().toString());
+            assessment.setAssessmentStartDate(editAssessStartDateTV.getText().toString());
             assessment.setAssessmentEndDate(editAssessEndDateTV.getText().toString());
             assessment.setAssociatedCourseTitle(editAssessAssociatedCourseSpinner.getSelectedItem().toString());
             //create a db object
@@ -158,20 +162,41 @@ public class EditAssessment extends AppCompatActivity implements AdapterView.OnI
             Toast.makeText(EditAssessment.this, "Error adding assessment.", Toast.LENGTH_SHORT).show();
         }
     }
-    public void setReminderBtn(View v) throws ParseException {
+    public void setReminderEndBtn(View v) throws ParseException {
         //setup date for the notification alarm
         date = dateFormat.parse(editAssessEndDateTV.getText().toString());
         calendar = Calendar.getInstance();
         calendar.setTime(date);
-        setNotification(calendar.getTimeInMillis());
+        setEndNotification(calendar.getTimeInMillis());
     }
+    public void setEndNotification(long timeInMillis){
 
-    public void setNotification(long timeInMillis){
         Intent intent = new Intent(EditAssessment.this, Notification.class);
         intent.putExtra("key",editAssessmentTitleTV.getText().toString() + " assessment is due on " + editAssessEndDateTV.getText().toString());
         PendingIntent sender = PendingIntent.getBroadcast(EditAssessment.this,++MainActivity.notifyNum, intent, 0 );
         AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
+        //these are for testing the alert
+        //Calendar now = Calendar.getInstance();
+        //long later  = now.getTimeInMillis() + 5000;
+        alarm.set(AlarmManager.RTC_WAKEUP, timeInMillis, sender);
+    }
 
+    public void setReminderStartBtn(View v) throws ParseException {
+        //setup date for the notification alarm
+        date = dateFormat.parse(editAssessStartDateTV.getText().toString());
+        calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        setStartNotification(calendar.getTimeInMillis());
+    }
+    public void setStartNotification(long timeInMillis){
+
+        Intent intent = new Intent(EditAssessment.this, Notification.class);
+        intent.putExtra("key",editAssessmentTitleTV.getText().toString() + " assessment starts on " + editAssessStartDateTV.getText().toString());
+        PendingIntent sender = PendingIntent.getBroadcast(EditAssessment.this,++MainActivity.notifyNum, intent, 0 );
+        AlarmManager alarm = (AlarmManager)getSystemService(ALARM_SERVICE);
+        //these are for testing the alert
+        //Calendar now = Calendar.getInstance();
+        //long later  = now.getTimeInMillis() + 5000;
         alarm.set(AlarmManager.RTC_WAKEUP, timeInMillis, sender);
     }
 

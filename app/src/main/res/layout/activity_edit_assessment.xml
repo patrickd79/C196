@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:ems="10"
             android:hint="@string/current_associated_course"
@@ -43,7 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:ems="10"
             android:hint="@string/enter_an_end_date_for_the_assessment"
@@ -53,7 +53,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editAssessmentTitleTV" />
+            app:layout_constraintTop_toBottomOf="@+id/editAssessStartDateTV" />
 
         <Spinner
             android:id="@+id/editAssessAssociatedCourseSpinner"
@@ -71,7 +71,9 @@
             android:id="@+id/editAssessmentTitleTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
             android:text="@string/assessment_title"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +85,9 @@
             android:id="@+id/editAssessmentIDTV"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
             android:text="@string/editAssessmentID"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -94,9 +98,9 @@
             android:id="@+id/deleteAssessmentBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="64dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="64dp"
             android:onClick="deleteAssessment"
             android:text="@string/edit_Assessment_delete_btn"
             app:layout_constraintEnd_toEndOf="parent"
@@ -107,21 +111,21 @@
             android:id="@+id/currentTypeExamLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:hint="@string/current_type_of_exam"
             app:layout_constraintEnd_toEndOf="@+id/editAssessPerfObjSpinner"
             app:layout_constraintStart_toStartOf="@+id/editAssessPerfObjSpinner"
             app:layout_constraintTop_toBottomOf="@+id/editAssessEndDateTV" />
 
         <Button
-            android:id="@+id/editAssessmentSetReminderBtn"
+            android:id="@+id/editAssessmentSetReminderStartBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:onClick="setReminderBtn"
-            android:text="@string/set_reminder"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="64dp"
+            android:onClick="setReminderStartBtn"
+            android:text="@string/set_reminder_for_start"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editAssessAssociatedCourseSpinner" />
@@ -130,14 +134,43 @@
             android:id="@+id/updateAssessmentBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="64dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="64dp"
             android:onClick="updateAssessment"
             android:text="@string/update_assessment"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editAssessmentSetReminderBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/editAssessmentSetReminderEndBtn" />
+
+        <Button
+            android:id="@+id/editAssessmentSetReminderEndBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="64dp"
+            android:onClick="setReminderEndBtn"
+            android:text="@string/set_reminder_for_end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editAssessmentSetReminderStartBtn" />
+
+        <EditText
+            android:id="@+id/editAssessStartDateTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:hint="@string/assessment_start_date"
+            android:inputType="date"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editAssessmentTitleTV" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

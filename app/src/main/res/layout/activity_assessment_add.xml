@@ -46,7 +46,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="24dp"
             android:ems="10"
             android:hint="@string/enter_an_end_date_for_the_assessment"
@@ -56,7 +56,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addAssessPerfObjSpinner" />
+            app:layout_constraintTop_toBottomOf="@+id/addAssessStartDateTV" />
 
         <Spinner
             android:id="@+id/addAssessAssociatedCourseSpinner"
@@ -83,23 +83,57 @@
 
         <Button
             android:id="@+id/addAssessmentSetReminderBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:onClick="setReminderBtn"
-            android:text="@string/set_reminder"
-            app:layout_constraintStart_toStartOf="@+id/addAssessAssociatedCourseSpinner"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:onClick="setReminderStartBtn"
+            android:text="@string/set_reminder_for_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addAssessAssociatedCourseSpinner" />
 
         <Button
             android:id="@+id/addAssessmentBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
             android:onClick="addAssessment"
             android:text="@string/add_assessment"
-            app:layout_constraintEnd_toEndOf="@+id/addAssessAssociatedCourseSpinner"
-            app:layout_constraintTop_toBottomOf="@+id/addAssessAssociatedCourseSpinner" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <EditText
+            android:id="@+id/addAssessStartDateTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:hint="@string/assessment_start_date"
+            android:inputType="date"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addAssessPerfObjSpinner" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:onClick="setReminderEndBtn"
+            android:text="@string/set_reminder_for_end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addAssessmentSetReminderBtn" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

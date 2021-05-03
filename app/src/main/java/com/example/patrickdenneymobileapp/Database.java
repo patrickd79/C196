@@ -13,7 +13,7 @@ import java.util.List;
 public class Database extends SQLiteOpenHelper {
 
     public static final String dbName = "Scheduler Database";
-    public static final int version = 10;
+    public static final int version = 11;
     //Term table col names
     public static final String terms = "TERMS";
     public static final String term_id = "TERM_ID";
@@ -32,15 +32,12 @@ public class Database extends SQLiteOpenHelper {
     public static final String ins_ph_number = "INSTRUCTOR_PHONE";
     public static final String ins_email = "INSTRUCTOR_EMAIL";
     public static final String course_notes = "COURSE_NOTES";
-    //Term and Courses Table
-    public static final String terms_and_courses = "TERMS_AND_COURSES";
-    public static final String tcTerm_ID = "Term_ID";
-    public static final String tcCourseID = "Course_ID";
     //Assessment table col names
     public static final String assessments = "ASSESSMENTS";
     public static final String assess_id = "ASSESSMENT_ID";
     public static final String assess_title = "TITLE";
     public static final String perf_or_obj = "PERF_OR_OBJ";
+    public static final String assess_start = "ASSESSMENT_START_DATE";
     public static final String assess_end = "ASSESSMENT_END_DATE";
     public static final String assess_associated_course = "ASSOCIATED_COURSE";
     //List to hold the objects
@@ -60,7 +57,7 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE "+courses+"("+course_id+" INTEGER PRIMARY KEY, "+course_title+" TEXT, " +  course_start + " TEXT, " +  course_end + " TEXT," +
                 " " + course_status+ " TEXT, "+ ins_name + " TEXT, " + ins_ph_number + " TEXT, " + ins_email + " TEXT, " + term_title + " TEXT, "+course_notes+" TEXT)");
         //db.execSQL("CREATE TABLE "+terms_and_courses+"("+tcTerm_ID+" INTEGER, "+tcCourseID+" INTEGER, PRIMARY KEY("+tcTerm_ID+","+tcCourseID+"))");
-        db.execSQL("CREATE TABLE "+assessments+"("+assess_id+" INTEGER PRIMARY KEY, "+ assess_title + " TEXT,"+perf_or_obj+" TEXT, " +assess_end + " TEXT, " +assess_associated_course+ " TEXT)");
+        db.execSQL("CREATE TABLE "+assessments+"("+assess_id+" INTEGER PRIMARY KEY, "+ assess_title + " TEXT,"+perf_or_obj+" TEXT, " + assess_start + " TEXT, " +assess_end + " TEXT, " +assess_associated_course+ " TEXT)");
 
 
     }
@@ -70,7 +67,6 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("drop table if exists "+terms);
         db.execSQL("drop table if exists "+courses);
         db.execSQL("drop table if exists "+assessments);
-        //db.execSQL("drop table if exists "+terms_and_courses);
         onCreate(db);
     }
 
@@ -86,9 +82,9 @@ public class Database extends SQLiteOpenHelper {
         //get a writeable database
         SQLiteDatabase db = this.getWritableDatabase();
         //write SQL query
-        String updateQuery = "UPDATE "+assessments+ " SET "+assess_title+"= ?, "+perf_or_obj+"= ?, "+assess_end+"= ?, "+assess_associated_course+"= ? WHERE "+assess_id+"= ?";
+        String updateQuery = "UPDATE "+assessments+ " SET "+assess_title+"= ?, "+perf_or_obj+"= ?, " +assess_start +"= ?, " + assess_end +"= ?, "+assess_associated_course+"= ? WHERE "+assess_id+"= ?";
         //update table
-        db.execSQL(updateQuery, new String[]{assessment.getAssessmentTitle(), assessment.getPerfOrObjective(),
+        db.execSQL(updateQuery, new String[]{assessment.getAssessmentTitle(), assessment.getPerfOrObjective(), assessment.getAssessmentStartDate(),
                 assessment.getAssessmentEndDate(), assessment.getAssociatedCourseTitle(), String.valueOf(assessment.getAssessmentID())});
 
 
@@ -171,6 +167,7 @@ public class Database extends SQLiteOpenHelper {
         //add the assessment values to the list
         values.put(assess_title, assessment.getAssessmentTitle());
         values.put(perf_or_obj, assessment.getPerfOrObjective());
+        values.put(assess_start, assessment.getAssessmentStartDate());
         values.put(assess_end, assessment.getAssessmentEndDate());
         values.put(assess_associated_course, assessment.getAssociatedCourseTitle());
         //insert the value list into the assessment table and returns -1 if unsuccessful or 0 if successful
@@ -189,10 +186,11 @@ public class Database extends SQLiteOpenHelper {
                 int assessmentId = cursor.getInt(0);
                 String title = cursor.getString(1);
                 String perfOrObj = cursor.getString(2);
-                String end = cursor.getString(3);
-                String course = cursor.getString(4);
+                String start = cursor.getString(3);
+                String end = cursor.getString(4);
+                String course = cursor.getString(5);
 
-                Assessment assessment = new Assessment(assessmentId, title, perfOrObj, end, course);
+                Assessment assessment = new Assessment(assessmentId, title, perfOrObj, start, end, course);
                 assessmentList.add(assessment);
                 Log.d("obj", "getAllAssessmentsFromDB: " + assessmentList.get(i).getAssessmentID());
                 Log.d("ID", "getAllAssessmentsFromDB:" +assess_id);
